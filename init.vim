@@ -11,3 +11,5 @@ elseif has("win32unix")
 elseif has("win32")
     runtime! user_local/win32.vim
 endif
+
+runtime! plugins/*.vim

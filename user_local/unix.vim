@@ -1,9 +1,4 @@
-augroup initvim
-  autocmd!
-augroup END
 
-let $XDG_CACHE_HOME = expand($HOME.'/.cache')
-let $XDG_CONFIG_HOME = expand($HOME.'/.config')
 let $XDG_DATA_DIRS = expand('/usr/local/share:/usr/share')
 let $XDG_DATA_HOME = expand($HOME.'/.local/share')
 
@@ -168,43 +163,13 @@ inoremap  
 
 command! Init e  ~/.config/nvim/init.vim
 
-if &compatible
-  set nocompatible
-endif
-" Add the dein installation directory into runtimepath
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-
-if dein#load_state('~/.cache/dein.vim')
-  call dein#begin('~/.cache/dein.vim')
-
-  call dein#add('~/.cache/dein.vim')
-
-
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('plasticboy/vim-markdown')
-  call dein#add('cohama/lexima.vim')
-  call dein#add('kannokanno/previm') 
-  call dein#add('iamcco/markdown-preview.vim') 
-  call dein#add('scrooloose/nerdcommenter')
-  call dein#add('pepo-le/win-ime-con.nvim')
-  call dein#add('tyru/open-browser.vim')
 
 
 
-  call dein#end()
-  call dein#save_state()
-endif
 
 
-filetype plugin indent on
-syntax enable
 
-call dein#add('Shougo/deoplete.nvim')
-if !has('nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
-endif
-let g:deoplete#enable_at_startup = 1
+
 
 hi Folded     term=standout ctermbg=2 ctermfg=white
 hi FoldColumn term=standout ctermbg=16 ctermfg=2
