@@ -2,6 +2,11 @@ augroup initvim
   autocmd!
 augroup END
 
+let $XDG_CACHE_HOME = expand($HOME.'/.cache')
+let $XDG_CONFIG_HOME = expand($HOME.'/.config')
+let $XDG_DATA_DIRS = expand('/usr/local/share:/usr/share')
+let $XDG_DATA_HOME = expand($HOME.'/.local/share')
+
 " set fileformat=unix
 
 set number
@@ -167,7 +172,7 @@ if &compatible
   set nocompatible
 endif
 " Add the dein installation directory into runtimepath
-set runtimepath+=~/.cache/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.cache/dein.vim')
   call dein#begin('~/.cache/dein.vim')
