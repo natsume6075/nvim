@@ -56,7 +56,6 @@ let $CURRENT_FILE_PASS = expand("%")
 let $CURRENT_FILE_NAME = substitute(expand("%:p"), "^.*/", "", "g")
 let $CURRENT_DIR       = substitute(expand("%:p"), "/[^/]*$", "", "g")
 let save_curpos = getcurpos()
-set nocompatible
 
 " pos は配列で，その扱いがおかしいっぽい？
 function! g:Set_curpos() abort
