@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-augroup initvim
-  autocmd!
-augroup END
-set nocompatible
-=======
 set wildmode=longest,full
 set wildchar=<C-l>
 nmap <silent> <C-h>        :bprevious<CR>
@@ -168,5 +162,4 @@ autocmd initvim BufWritePre * let &bex = '.' . strftime("%Y%m%d_%H%M%S")
 autocmd initvim BufWritePost $XDG_CONFIG_HOME/nvim/init.vim so $XDG_CONFIG_HOME/nvim/init.vim
 "}}}
 
->>>>>>> c639e11188e6769f538220229cc0a11626b4dbca
 
