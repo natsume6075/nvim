@@ -1,5 +1,7 @@
+set wildmenu
 set wildmode=longest,full
-set wildchar=<C-l>
+set wildmenu
+set wildmenu
 nmap <silent> <C-h>        :bprevious<CR>
 nmap <silent> <C-l>        :bnext<CR>
 
