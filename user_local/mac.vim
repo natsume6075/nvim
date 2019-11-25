@@ -1,304 +1,16 @@
-" vim: foldmethod=marker
-" vim: foldmarker=\{{{,\}}}
-"                                          _ __ _,  ＿_
-"                                      ,.-' 丶   '｀丶/
-"                                    ／ ）     ￣     ＼
-"                           _,..,_ /__／        r ―-､   ＼
-"                        ／      ｀丶    ＿_    丶 ＿）  ヽ―-､_,
-"                     _／             ＼/   ﾉ             | く ＼
-"                    /                  ヽ￣              /  }￣
-"                   /              _     |＿           ／   /
-"                   |           ／  ｀ヽ.|  ｀ー---‐-´ __,ノ
-"                  /           /   _＿  }ﾉ     __ -― ￣￣￣￣￣￣￣￣￣￣￣／＿＿＿
-"                ／        ＿／  /￣     /   ,-                                  ／|
-"               /     .／￣           _//   / ￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|  |
-"              /  _ ／ _ ,-  __ , __-   |_,/￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣| |  |
-"              (ｰ´_,.´     | |                                                | |  |/|
-"                ￣        | |    |￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣|    | |    |
-"                          | |    |                                      |    | | /| |
-"                          | |    |                                      |    | ||/| |
-"                          | |･>>>|                                      |    | || | |
-"                          | |    |                                      |    | ||/  |
-"                          | |    |                                      |    | |    |
-"                          | |    |                                      |    | |    |
-"                          | |    |     なつめ の init.vim               |    | |    |
-"                          | |    |       かきこむ        たくわえる     |    | |    |
-"                          | |    |       ニトロチャージ  とっておき     |    | |    |
-"                          | |    |                                      |    | |    |
-"                          | |    |                                      |    | |    |
-"                          | |    |                                      |    | |    |
-"                          | |    |                                      |    | |    |
-"                          | |    |                                      |    | |    |
-"                          | |    |＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿|    | |    |
-"                          | |                                                | |    |
-"                          | |                                                | |    |
-"                          | |                                                | |    |
-"                          | |                                                | |    |
-"                          | |                                                | |    |
-"                          | |                                                | |    |
-"                          | |                                                | |    |
-" ----------------------------------------------------------------------------------------------------
 
-
-augroup initvim
-  autocmd!
-augroup END
-
-
-
-" --- Environment Variables: --------------------------------------------------{{{
-let $XDG_DATA_DIRS = expand('/usr/local/share:/usr/share')
-let $XDG_DATA_HOME = expand($HOME.'/.local/share')
-"}}}
-
-" --- Global Functions: -------------------{{{
-let $CURRENT_FILE_PASS = expand("%")
-let $CURRENT_FILE_NAME = substitute(expand("%:p"), "^.*/", "", "g")
-let $CURRENT_DIR       = substitute(expand("%:p"), "/[^/]*$", "", "g")
-let save_curpos = getcurpos()
-
-" pos は配列で，その扱いがおかしいっぽい？
-function! g:Set_curpos() abort
-  call setpos('.', save_curpos)
-endfunction
-
-function! s:move_cursor_pos_mapping(str, ...)
-  let left = get(a:, 1, "<Left>")
-  let lefts = join(map(split(matchstr(a:str, '.*<Cursor>\zs.*\ze'), '.\zs'), 'left'), "")
-  return substitute(a:str, '<Cursor>', '', '') . lefts
-endfunction
-function! Move_cursor_pos_mapping(str)
-  return s:move_cursor_pos_mapping(a:str, "\<Left>")
-endfunction
-" Ref: http://d.hatena.ne.jp/osyo-manga/20130424/1366800441
-"}}}
-
-" --- Global Settings: -------------------------------------{{{
-set fenc=utf-8
-set backupdir=$XDG_DATA_HOME/nvim/backup
-set backup
-set directory=$XDG_DATA_HOME/nvim/swap
-set swapfile
-set autoread
-set hidden
-set textwidth=0
-set display=lastline
-set pumheight=12
-set spell
-set spelllang=en,cjk
-"}}}
-
-" --- Motion ---------------------{{{
-set whichwrap=<,>,[,]
-set backspace=indent,eol,start
-set mouse=a
-set virtualedit=block
-set scrolloff=2
-"}}}
-
-" --- Undo ------------------{{{
-set undodir=$XDG_DATA_HOME/nvim/undo
-set undofile
-set undolevels=1000
-"}}}
-
-" --- Yank, Paste, Resisters ----------- {{{
-autocmd initvim TextYankPost *
-      \ echomsg "yank"string(v:event.regcontents)" to reg: ".v:event.regname
-autocmd initvim TextYankPost * :wv
-autocmd initvim FocusGained * :rv!
-" }}}
-
-" --- viminfo -------------------------- {{{
-set viminfo+=n$XDG_DATA_HOME/nvim/viminfo
-" }}}
-
-" --- Folding -------------- {{{
-set foldenable
-set foldmethod=marker
-set foldmarker=\{{{,\}}}
-set foldtext=FoldCCtext()
-let g:foldCCtext_head = ''
-" let g:foldCCtext_tail = 'printf(" %s[%4d lines Lv%-2d ]%s  ", v:folddashes, v:foldend-v:foldstart+1, v:foldlevel, v:folddashes)'
-let g:foldCCtext_tail = 'printf(" %s[ %4d   %s  ", substitute(repeat("[", v:foldlevel-1), "[[[[[", "V ", "g"), v:foldend-v:foldstart+1, (repeat("]", v:foldlevel).repeat(" ", 5-v:foldlevel))[0:4])'
-set foldcolumn=3
-set fillchars=vert:\|
-" foldcolumn が足りなくなった時に，自動で大きくする バグあり
-" Ref: http://leafcage.hateblo.jp/entry/20111223/1324705686
-let g:foldCCtext_enable_autofdc_adjuster = 1
-" Don't save options.
-set viewoptions-=options
-" }}}
-
-" --- Information ------------------------- {{{
-set number
-set visualbell
-set showmatch
-set matchtime=1
-set showcmd
-set ruler
-set laststatus=2
-set wildmode=list:longest
-" }}}
-
-" --- Tab / invisible character ----------- {{{
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set autoindent
-set smartindent
-set listchars=tab:>-,trail:.
-set list
-" }}}
-
-" --- Search ------------------------------ {{{
-set ignorecase
-set smartcase
-set incsearch
-set wrapscan
-set hlsearch
-" }}}
-
-" about help ---------------------
-" If true Vim master, use English help file.
-set helplang& helplang=ja,en
-
-" ---------------------------------------
-"  Commands Settings:
-" ---------------------------------------
-"{{{
-command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
-      \ | diffthis | wincmd p | diffthis
-
-
-command! MOJI %s/./&/g
-"}}}
-
-" ---------------------------------------
-"  Autocmd:
-" ---------------------------------------
-"{{{
-
-autocmd initvim BufReadPost *
-      \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-      \   exe "normal! g'\"" |
-      \ endif
-autocmd initvim BufWritePre * let &bex = '.' . strftime("%Y%m%d_%H%M%S")
-"}}}
-
-
-" init.vim を保存したときにリロード
-autocmd initvim BufWritePost $XDG_CONFIG_HOME/nvim/init.vim so $XDG_CONFIG_HOME/nvim/init.vim
-
-
-
-" ---------------------------------------
-"  Dein Scripts:
-" ---------------------------------------
-"{{{
-
-"}}}
-
-" ---------------------------------------
-"  Appearance:
-" ---------------------------------------
-"{{{
-" Color Scheme: -----------------------
-set runtimepath+=$XDG_CONFIG_HOME/nvim/runtime/
-
-" :Unite -auto-preview colorscheme
-" で一覧を表示する
-
-colorscheme my_default
-" colorscheme molokai
-" colorscheme chocolatepapaya
-" colorscheme anotherdark
-" colorscheme bubblegum
-" colorscheme buddy
-" colorscheme emacs
-" colorscheme elflord
-" colorscheme desert
-" colorscheme hybrid_reverse
-" colorscheme hybrid
-
-" set background=dark
-
-
-hi Visual ctermbg = 6
-
-highlight conceal ctermfg=7 ctermbg=black guibg=darkgray
-" test "{{{
-"}}}
-hi Folded     term=standout ctermbg=17 ctermfg=white
-hi FoldColumn term=standout ctermbg=16 ctermfg=2
-" 欲を言うなら，fold しても1行目の構文ハイライトは維持したい。
-
-
-" https://h2plus.biz/hiromitsu/entry/674
-" カラースキームをまとめたサイト
-
-hi MatchParen ctermbg=240
-
-hi spellbad NONE
-hi SpellCap NONE
-hi SpellRare NONE
-hi SpellLocal NONE
-
-set cursorline
-hi clear CursorLine
-hi CursorColumn ctermbg=0
-hi CursorLineNr term=bold   cterm=NONE ctermfg=215 ctermbg=NONE
-
-" "todo なぜか更新しないと反映されない
-" autocmd initvim BufRead,BufNewfile *
-syntax match fmrkr '{{{\|}}}'
-      \ containedin=vimLineComment contained |
-      \ hi fmrkr term=NONE
-      \ ctermbg=NONE ctermfg=black
-
-
-
-
-" --- Conceal: --------------------{{{
-let conceallevel=0
-set conceallevel=0
-set concealcursor=""
-"}}}
-"}}}
 
 " ---------------------------------------
 "  Key Map:
 " ---------------------------------------
 "{{{
-"---------------------------------------------------------------------------"
-" Commands \ Modes | Normal | Insert | Command | Visual | Select | Operator |
-"------------------|--------|--------|---------|--------|--------|----------|
-" map  / noremap   |    @   |   -    |    -    |   @    |   @    |    @     |
-" nmap / nnoremap  |    @   |   -    |    -    |   -    |   -    |    -     |
-" vmap / vnoremap  |    -   |   -    |    -    |   @    |   @    |    -     |
-" omap / onoremap  |    -   |   -    |    -    |   -    |   -    |    @     |
-" xmap / xnoremap  |    -   |   -    |    -    |   @    |   -    |    -     |
-" smap / snoremap  |    -   |   -    |    -    |   -    |   @    |    -     |
-" map! / noremap!  |    -   |   @    |    @    |   -    |   -    |    -     |
-" imap / inoremap  |    -   |   @    |    -    |   -    |   -    |    -     |
-" cmap / cnoremap  |    -   |   -    |    @    |   -    |   -    |    -     |
-"---------------------------------------------------------------------------"
 
-let maplocalleader = "\<Space>"
 
 " ---------------------------------------
 "  Key Map (n):
 " ---------------------------------------
 "{{{
-" simple mapping -------------------
-nnoremap Y y$
-nnoremap j gj
-nnoremap k gk
-map gm %
-nnoremap tcou :%s/.//gn
 
-
-nmap <silent> <C-_> <plug>(caw:hatpos:toggle)
 " spell
 nnoremap <C-s> z=
 nnoremap con J
@@ -306,34 +18,9 @@ nnoremap con J
 nnoremap <C-Up> "zdd<Up>"zP
 nnoremap <C-Down> "zdd"zp
 
-"Search/substitute
-" anzu search
-nmap n <Plug>(anzu-n-with-echo)
-nmap N <Plug>(anzu-N-with-echo)
-" nmap n <Plug>(anzu-mode-n)
-" nmap N <Plug>(anzu-mode-N)
-nmap * <Plug>(anzu-star-with-echo)
-nmap # <Plug>(anzu-sharp-with-echo)
-" nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
-" set statusline=%{anzu#search_status()}
-" nnoremap <expr> n anzu#mode#mapexpr("n", "", "zzzv")
-" nnoremap <expr> N anzu#mode#mapexpr("N", "", "zzzv")
-" let g:anzu_status_format = "%#WarningMsg#%p(%i/%l)"
-
-nnoremap <expr> sub Move_cursor_pos_mapping(":%s/<C-r>0/<C-r>0<CURSOR>/g")
-vnoremap <expr> sub Move_cursor_pos_mapping(":s/<C-r>0/<C-r>0<CURSOR>/g")
 
 
 " motion ------------------------------{{{
-inoremap <C-a> <C-o>^
-" アンドゥを抜けないで左に動かす．
-inoremap <C-b> <C-g>U<left>
-cnoremap <C-b> <left>
-noremap! <C-e> <END>
-cnoremap <C-f> <Right>
-inoremap <C-n> <Down>
-inoremap <C-p> <Up>
-noremap! <C-t> <C-e>
 noremap H _
 noremap L $
 nnoremap <silent> M     :keepjumps normal ─M<CR>
@@ -368,33 +55,6 @@ function! To_top_of_window_OR_scroll_previous_page() abort" {{{
     return "H"
   endif
 endfunction" }}}
-
-
-
-" cursor が移動したときとしなかったときとで，動作を変えるしくみ。
-" f コマンドは見つからなかったときにエラーとして扱われるらしく，これでうまくいかない。
-nnoremap ─l :
-      \:let g:save_curpos = getcurpos()<CR>
-      \l
-      \:call Hoge(save_curpos)
-function! Hoge(save_curpos) abort
-  if save_curpos[1] != getcurpos()[1]
-    return "^"
-  else
-    return ""
-  endif
-endfunction
-
-nnoremap ─hoge :
-      \:let save_curpos = getcurpos()<CR>
-      \jjjkl
-      \:if save_curpos == getcurpos()<CR>
-      \:    echo "移動してない"<CR>
-      \:else<CR>
-      \:    echo "移動した"<CR>
-      \:endif<CR>
-
-" autocmd initvim CursorMoved * j
 
 
 "}}}
@@ -443,23 +103,23 @@ let mapleader = "z"
 
 " folding -------------------------------------------------- {{{
 
-noremap  <silent> <Leader>w :echo FoldCCnavi()<CR>
-nnoremap <silent> <Leader>f za
-nnoremap <silent> <Leader>F zA
-nnoremap <silent> <Leader>M zM
-nnoremap <silent> <Leader>j zj
-nnoremap <silent> <Leader>k zk
-nnoremap <silent> <Leader>d zd
-nnoremap <silent> <Leader>D zD
-nnoremap <silent> <Leader>c zc
-nnoremap <silent> <Leader>C zC
-nnoremap <silent> <Leader>i zi
+noremap  <silent> zw :echo FoldCCnavi()<CR>
+nnoremap <silent> zf za
+nnoremap <silent> zF zA
+nnoremap <silent> zM zM
+nnoremap <silent> zj zj
+nnoremap <silent> zk zk
+nnoremap <silent> zd zd
+nnoremap <silent> zD zD
+nnoremap <silent> zc zc
+nnoremap <silent> zC zC
+nnoremap <silent> zi zi
 " なにかつぶした
-nnoremap <silent> <Leader>h zMzv
-nnoremap <silent> <Leader>a zR
-nnoremap <silent> <Leader>A zM
-nnoremap <silent> <Leader>j :<C-u>call <SID>smart_foldjump('j')<CR>
-nnoremap <silent> <Leader>k :<C-u>call <SID>smart_foldjump('k')<CR>
+nnoremap <silent> zh zMzv
+nnoremap <silent> za zR
+nnoremap <silent> zA zM
+nnoremap <silent> zj :<C-u>call <SID>smart_foldjump('j')<CR>
+nnoremap <silent> zk :<C-u>call <SID>smart_foldjump('k')<CR>
 
 function! s:smart_foldjump(direction)" {{{
   if a:direction == 'j'
@@ -494,28 +154,14 @@ endfunction
 
 " }}}
 
-let mapleader = "\\"
-let mapleader = "s"
 
 " about pain --------------------- {{{
 " split pain horizontally/vertically
-nnoremap <silent> <Leader>S :split<CR>
-nnoremap <silent> <Leader>s :vsplit<CR>
-nnoremap <silent> <Leader>b :5split<CR>:enew<CR>
-" focus to another pane
-nnoremap <Leader>j <C-w>w
-" swap to another pane
-nnoremap <Leader>J <C-w>J
-nnoremap <Leader>K <C-w>K
-nnoremap <Leader>H <C-w>H
-nnoremap <Leader>L <C-w>L
-" Expand/Shrink focused pane (take number)
-nnoremap <Leader>> <C-w>>
-nnoremap <Leader>< <C-w><
-nnoremap <Leader>+ <C-w>+
-nnoremap <Leader>- <C-w>-
-"}}}
+nnoremap <silent> Sb :5split<CR>:enew<CR>
 
+let mapleader = "\\"
+let mapleader = "s"
+" ------------------------------------------------------------------------------------------------------------------
 " about buffer (airline) ---------------------{{{
 " new buffer
 " nnoremap <silent> <Leader>n :tabnew<CR>
@@ -531,7 +177,6 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>h <Plug>AirlineSelectPrevTab
 nmap <leader>l <Plug>AirlineSelectNextTab
-nmap <silent> ─Control-h :bprevious<CR>
 "}}}
 
 " interface between pain and buffer ---------------------{{{
@@ -553,81 +198,7 @@ endfunction
 
 let mapleader = "\\"
 
-nnoremap <silent> <C-f> :Defx<CR>
-" nnoremap <silent> <C-f> :Defx -show-ignored-files<CR>
 
-" defx --------{{{
-autocmd FileType defx call s:defx_my_settings()
-function! s:defx_my_settings() abort
-  " Define mappings
-  nnoremap <silent><buffer><expr> <C-f>
-        \ defx#do_action('change_vim_cwd')
-        \ .defx#do_action('quit')
-  nnoremap <silent><buffer><expr> q
-        \ defx#do_action('quit')
-  nnoremap <silent><buffer><expr> o
-        \ defx#do_action('change_vim_cwd')
-        \ .defx#do_action('open')
-  nnoremap <silent><buffer><expr> O
-        \ defx#do_action('open')
-  nnoremap <silent><buffer><expr> cd
-        \ defx#do_action('change_vim_cwd')
-  nnoremap <silent><buffer><expr> h
-        \ defx#do_action('cd', ['..'])
-  nnoremap <silent><buffer><expr> l
-        \ defx#do_action('open_directory')
-  nnoremap <silent><buffer><expr> l
-        \ defx#do_action('open')
-  nnoremap <silent><buffer><expr> .
-        \ defx#do_action('cd', [expand($CURRENT_DIR)])
-  nnoremap <silent><buffer><expr> ~
-        \ defx#do_action('cd')
-  nnoremap <silent><buffer><expr> a
-        \ defx#do_action('toggle_ignored_files')
-  nnoremap <silent><buffer><expr> S
-        \ defx#do_action('toggle_sort', 'Time')
-
-  nnoremap <silent><buffer><expr> c
-        \ defx#do_action('copy')
-  nnoremap <silent><buffer><expr> m
-        \ defx#do_action('move')
-  nnoremap <silent><buffer><expr> p
-        \ defx#do_action('paste')
-  nnoremap <silent><buffer><expr> K
-        \ defx#do_action('new_directory')
-  nnoremap <silent><buffer><expr> N
-        \ defx#do_action('new_file')
-  nnoremap <silent><buffer><expr> M
-        \ defx#do_action('new_multiple_files')
-  nnoremap <silent><buffer><expr> C
-        \ defx#do_action('toggle_columns',
-        \                'mark:filename:type:size:time')
-  nnoremap <silent><buffer><expr> d
-        \ defx#do_action('remove')
-  nnoremap <silent><buffer><expr> r
-        \ defx#do_action('rename')
-  nnoremap <silent><buffer><expr> !
-        \ defx#do_action('execute_command')
-  nnoremap <silent><buffer><expr> x
-        \ defx#do_action('execute_system')
-  nnoremap <silent><buffer><expr> yy
-        \ defx#do_action('yank_path')
-  nnoremap <silent><buffer><expr> ;
-        \ defx#do_action('repeat')
-  nnoremap <silent><buffer><expr> <Space>
-        \ defx#do_action('toggle_select') . 'j'
-  nnoremap <silent><buffer><expr> *
-        \ defx#do_action('toggle_select_all')
-  nnoremap <silent><buffer><expr> j
-        \ line('.') == line('$') ? 'gg' : 'j'
-  nnoremap <silent><buffer><expr> k
-        \ line('.') == 1 ? 'G' : 'k'
-  nnoremap <silent><buffer><expr> <C-l>
-        \ defx#do_action('redraw')
-  nnoremap <silent><buffer><expr> <C-g>
-        \ defx#do_action('print')
-endfunction
-"}}}
 
 " function key
 " default: map <f1> to display the help file
@@ -664,12 +235,6 @@ nnoremap <f12> :
       \:endif<CR>
       \<CR>
 
-" small trick -----------------------
-" delete only last char in current line
-nnoremap <silent>d, :
-      \:let save_curpos = getcurpos()<CR>
-      \A<C-h><ESC>
-      \:call setpos('.', save_curpos)<CR>
 "}}}
 
 " ---------------------------------------
@@ -679,8 +244,6 @@ nnoremap <silent>d, :
 cnoremap jj <C-c>
 cnoremap <C-a> <HOME>
 cnoremap <C-y> <HOME>bufdo :
-cnoremap <C-i> <C-l>
-set wildchar=<C-l>
 "}}}
 
 " ---------------------------------------
@@ -752,6 +315,69 @@ set matchpairs=(:),{:},[:],<:>
 
 "}}}
 "}}}
+
+" Color Scheme: -----------------------
+set runtimepath+=$XDG_CONFIG_HOME/nvim/runtime/
+
+" :Unite -auto-preview colorscheme
+" で一覧を表示する
+
+colorscheme my_default
+" colorscheme molokai
+" colorscheme chocolatepapaya
+" colorscheme anotherdark
+" colorscheme bubblegum
+" colorscheme buddy
+" colorscheme emacs
+" colorscheme elflord
+" colorscheme desert
+" colorscheme hybrid_reverse
+" colorscheme hybrid
+
+" set background=dark
+
+
+hi Visual ctermbg = 6
+
+highlight conceal ctermfg=7 ctermbg=black guibg=darkgray
+" test "{{{
+"}}}
+hi Folded     term=standout ctermbg=17 ctermfg=white
+hi FoldColumn term=standout ctermbg=16 ctermfg=2
+" 欲を言うなら，fold しても1行目の構文ハイライトは維持したい。
+
+
+" https://h2plus.biz/hiromitsu/entry/674
+" カラースキームをまとめたサイト
+
+hi MatchParen ctermbg=240
+
+hi spellbad NONE
+hi SpellCap NONE
+hi SpellRare NONE
+hi SpellLocal NONE
+
+set cursorline
+hi clear CursorLine
+hi CursorColumn ctermbg=0
+hi CursorLineNr term=bold   cterm=NONE ctermfg=215 ctermbg=NONE
+
+" "todo なぜか更新しないと反映されない
+" autocmd initvim BufRead,BufNewfile *
+syntax match fmrkr '{{{\|}}}'
+      \ containedin=vimLineComment contained |
+      \ hi fmrkr term=NONE
+      \ ctermbg=NONE ctermfg=black
+
+
+
+
+" --- Conceal: --------------------{{{
+let conceallevel=0
+set conceallevel=0
+set concealcursor=""
+"}}}
+
 
 " ---------------------------------------
 "  Mapping For Colemak:
@@ -848,36 +474,13 @@ endfunction
 let counter = 0
 "}}}
 
-vmap œ     <plug>(neosnippet_expand_target)
-" vmap œ     <plug>(neosnippet_expand_target)
+vmap <C-k>     <plug>(neosnippet_expand_target)
+" vmap <C-k     <plug>(neosnippet_expand_target)
 imap <expr> <C-i>   deoplete#complete_common_string()
 "imap <hoge>    <plug>(neosnippet_start_unite_snippet)
 "}}}
 
-" lexima ------------------------{{{
-call lexima#add_rule({'char': '$',       'input_after': '$', 'filetype': 'tex'})
-call lexima#add_rule({'char': '$',       'at': '\%#\$', 'leave': 1, 'filetype': 'tex'})
-call lexima#add_rule({'char': '<Space>', 'at': '\$\%#\$', 'input': '<Space>', 'input_after': '<Space>', 'filetype': 'tex'})
-call lexima#add_rule({'char': '<BS>',    'at': '\$\%#\$', 'delete': 1, 'filetype': 'tex'})
-call lexima#add_rule({'char': '<BS>',    'at': '\$ \%# \$', 'delete': 1, 'filetype': 'tex'})
-call lexima#add_rule({'char': '$',    'at': '@\%#', 'input_after': '$@', 'filetype': 'tex'})
 
-
-
-call lexima#add_rule({'char': '<', 'input': '<', 'input_after': '>'})
-call lexima#add_rule({'char': '>', 'at': '\%#>', 'leave': 1})
-call lexima#add_rule({'char': '<Space>', 'at': '<\%#>', 'input': '<Space>', 'input_after': '<Space>'})
-call lexima#add_rule({'char': '<BS>',    'at': '<\%#>', 'delete': 1})
-call lexima#add_rule({'char': '<BS>',    'at': '< \%# >', 'delete': 1})
-
-
-
-let g:leximamap_escape = 'jj'
-
-"}}}
-
-" vim-surround ---------------- {{{
-" }}}
 
 " caw : commentout------------- {{{
 let g:caw_no_default_keymappings = 1
@@ -890,14 +493,6 @@ let g:evervim_devtoken='S=s1:U=950c7:E=17007f452d0:C=168b0432528:P=1cd:A=en-devt
 " :EvervimSetup
 " }}}
 
-" defx -----------------------{{{
-" Like Textmate icons.
-call defx#custom#column('mark', {
-      \ 'directory_icon': '▸',
-      \ 'readonly_icon': '✗',
-      \ 'selected_icon': '✓',
-      \ })
-"}}}
 
 " Deol -----------------------{{{
 tnoremap  <CR>  <Plug>(deol_execute_line)
@@ -923,16 +518,6 @@ let $LANG = "no defined"
 let $LANG_COMMENT_TOKEN = "no defined"
 
 
-" template
-" " hogehogengo ----------------------
-" autocmd BufNewFile,BufRead *.hogehogengo setfiletype hogehogengo
-" autocmd initvim FileType hogehogengo
-"      \ let $LANG = "hogehogengo"
-
-
-" todo: 全部
-" &filetype =~ 'help'
-" でいい説がある
 
 " vim --------------------------
 autocmd initvim FileType vim
@@ -1008,6 +593,7 @@ function! s:previewTex() range
   silent call system("latexmk preview.tex")
   silent call system("open -ga /Applications/Skim.app preview.pdf")
 endfunction
+let maplocalleader = "\<Space>"
 autocmd initvim FileType tex
       \ | nmap <buffer> <localleader>la vae:call <SID>previewTex()<CR>
       \ | nmap <buffer> <localleader><localleader> vae:call <SID>previewTex()<CR>
@@ -1047,17 +633,3 @@ autocmd BufWritePost * if expand('%') != '' && &buftype !~ 'nofile'             
 autocmd BufRead      * if expand('%') != '' && &buftype !~ 'nofile' && &buftype !~ 'help' | silent loadview | endif
 "}}}
 
-
-" ----------------------------------------------
-"
-" おしまい
-"
-"
-"       "<<<" "lll"
-"       " //        eee "
-"       "/\ /\      /\ /\   "
-"        ￣￣￣￣￣￣￣￣￣￣   >
-"        ￣                     >
-"
-"
-" ----------------------------------------------
