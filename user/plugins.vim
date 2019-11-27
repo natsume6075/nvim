@@ -1,6 +1,10 @@
 set runtimepath+=$XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('$XDG_CACHE_HOME/dein')
+
+  " コメントアウト外したら以下のコマンドを実行する
+  " :call dein#recache_runtimepath()
+
   call dein#begin('$XDG_CACHE_HOME/dein')
 
   " Let dein manage dein
@@ -35,16 +39,16 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
   call dein#add('tyru/caw.vim')
   " call dein#add('powerline/fonts')
   " call dein#add('Lokaltog/vim-powerline')
-  " call dein#add('vim-airline/vim-airline')
-  " call dein#add('vim-airline/vim-airline-themes')
-  " call dein#add('powerline/fonts')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('powerline/fonts')
   call dein#add('vim-jp/vimdoc-ja')
   " call dein#add('thinca/vim-ft-help_fold')
   call dein#add('tpope/vim-fugitive')
   call dein#add('LeafCage/foldCC.vim')
 
   call dein#add('lervag/vimtex')
-  " call dein#add('cohama/lexima.vim')
+  call dein#add('cohama/lexima.vim')
 
   " Required :
   call dein#end()
