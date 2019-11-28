@@ -121,3 +121,6 @@ let g:airline_symbols.maxlinenr = ''
 "   let g:airline_section_c = airline#section#create(['%<', 'readonly', 'path'])
 " endif
 " Ref: https://github.com/zchee/.nvim/blob/master/init.vim
+
+
+let w:airline_disabled = 1

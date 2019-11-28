@@ -55,6 +55,7 @@ augroup initvim
 augroup END
 
 runtime! user/*.vim
+runtime! plugins/*.vim
 
 if has("mac")
     runtime! user_local/mac.vim
@@ -68,4 +69,4 @@ elseif has("win32")
     runtime! user_local/win32.vim
 endif
 
-runtime! plugins/*.vim
+
