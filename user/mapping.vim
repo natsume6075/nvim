@@ -12,6 +12,7 @@
 " cmap / cnoremap  |    -   |   -    |    @    |   -    |   -    |    -     |
 "---------------------------------------------------------------------------"
 
+let maplocalleader = "\<Space>"
 
 nnoremap Y y$
 nnoremap j gj

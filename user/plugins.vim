@@ -67,6 +67,7 @@ if dein#check_install()
 
 endif
 
+let g:dein#auto_recache = 1
 
 call dein#add('Shougo/deoplete.nvim')
 if !has('nvim')
