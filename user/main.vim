@@ -3,7 +3,8 @@
 
 set wildmenu
 set wildmode=longest,full
-set wildchar=<C-l>
+" unix では comment out しないと^I が入力され補完されない
+" set wildchar=<C-l>
 nmap <silent> <C-h>        :bprevious<CR>
 nmap <silent> <C-l>        :bnext<CR>
 

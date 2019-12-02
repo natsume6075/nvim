@@ -26,15 +26,15 @@ augroup initvim
     endif
   endfunction
 
+
   autocmd InsertEnter *
         \ if g:current_ime_mode == 1 |
         \   call Ime_on() |
         \ endif
-  autocmd InsertLeave * call Ime_off()
-  " autocmd InsertLeave *
-        "\ if g:current_ime_mode == 1 |
-        "\   call Ime_off() |
-        "\ endif
+  autocmd InsertLeave *
+        \ if g:current_ime_mode == 1 |
+        \   call Ime_off() |
+        \ endif
 
   imap <silent>っj <ESC>
   imap <silent> jj <ESC>

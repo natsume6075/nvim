@@ -1,4 +1,4 @@
-let g:org_todo_keywords = [['TODO(t)', '|', 'DONE(d)'],
+let g:org_todo_keywords = [['TODO(t)', 'TOWAIT(w)', '|', 'DONE(d)'],
     \ ['TOASK(a)', '|', 'HOGE(f)'],
     \ ['CANCELED(c)']]
 
