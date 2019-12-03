@@ -320,50 +320,6 @@ set matchpairs=(:),{:},[:],<:>
 "}}}
 
 " Color Scheme: -----------------------
-set runtimepath+=$XDG_CONFIG_HOME/nvim/runtime/
-
-" :Unite -auto-preview colorscheme
-" で一覧を表示する
-
-colorscheme my_default
-" colorscheme molokai
-" colorscheme chocolatepapaya
-" colorscheme anotherdark
-" colorscheme bubblegum
-" colorscheme buddy
-" colorscheme emacs
-" colorscheme elflord
-" colorscheme desert
-" colorscheme hybrid_reverse
-" colorscheme hybrid
-
-" set background=dark
-
-
-hi Visual ctermbg = 6
-
-highlight conceal ctermfg=7 ctermbg=black guibg=darkgray
-" test "{{{
-"}}}
-hi Folded     term=standout ctermbg=17 ctermfg=white
-hi FoldColumn term=standout ctermbg=16 ctermfg=2
-" 欲を言うなら，fold しても1行目の構文ハイライトは維持したい。
-
-
-" https://h2plus.biz/hiromitsu/entry/674
-" カラースキームをまとめたサイト
-
-hi MatchParen ctermbg=240
-
-hi spellbad NONE
-hi SpellCap NONE
-hi SpellRare NONE
-hi SpellLocal NONE
-
-set cursorline
-hi clear CursorLine
-hi CursorColumn ctermbg=0
-hi CursorLineNr term=bold   cterm=NONE ctermfg=215 ctermbg=NONE
 
 " "todo なぜか更新しないと反映されない
 " autocmd initvim BufRead,BufNewfile *
@@ -443,7 +399,7 @@ inoremap <expr> <S-TAB> deoplete#refresh().deoplete#smart_close_popup()
 " neosnippet --------------------- {{{
 let g:neosnippet#snippets_directory='$XDG_CONFIG_HOME/nvim/my_snippets'
 
-" note: it must be "imap" and "smap".  it uses <plug> mappings.
+" note: it must be "imap" and "smap".  It uses <plug> mappings.
 " a<C-h> の理由：
 "   例えば { を使ったマッピングがある影響で { を入力すると待機モードになる。
 "   待機モードで expand を呼び出しても即座に展開はされず，二度押しが必要だった。
