@@ -14,6 +14,9 @@
 
 let maplocalleader = "\<Space>"
 
+map  <BS> <C-h>
+map! <BS> <C-h>
+
 nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
