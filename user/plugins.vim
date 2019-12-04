@@ -41,7 +41,6 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
   " call dein#add('Lokaltog/vim-powerline')
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
-  call dein#add('powerline/fonts')
   " call dein#add('vim-jp/vimdoc-ja')
   " call dein#add('thinca/vim-ft-help_fold')
   call dein#add('tpope/vim-fugitive')
@@ -76,3 +75,4 @@ if !has('nvim')
 endif
 let g:deoplete#enable_at_startup = 1
 
+" call map(dein#check_clean(), "delete(v:val, 'rf')")
