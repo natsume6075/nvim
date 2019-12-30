@@ -1,5 +1,3 @@
-
-" defx --------{{{
 nnoremap <silent> <C-f> :Defx<CR>
 
 autocmd FileType defx call s:defx_my_settings()
@@ -81,5 +79,4 @@ call defx#custom#column('mark', {
       \ 'readonly_icon': '✗',
       \ 'selected_icon': '✓',
       \ })
-"}}}
 
