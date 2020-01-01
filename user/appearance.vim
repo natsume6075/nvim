@@ -1,7 +1,9 @@
 " :Unite -auto-preview colorscheme
 " で一覧を表示する
+" https://h2plus.biz/hiromitsu/entry/674
+" カラースキームをまとめたサイト
 
-colorscheme my_default
+" colorscheme my_default
 " colorscheme molokai
 " colorscheme chocolatepapaya
 " colorscheme anotherdark
@@ -12,29 +14,27 @@ colorscheme my_default
 " colorscheme desert
 " colorscheme hybrid_reverse
 " colorscheme hybrid
+ 
+set background=dark
+try
+    colorscheme solarized
+catch
+endtry
 
-" set background=dark
 
-
-hi Visual ctermbg = 6
+hi Visual ctermbg = 8
 
 highlight conceal ctermfg=7 ctermbg=black guibg=darkgray
 " test "{{{
 "}}}
-hi Folded     term=standout ctermbg=17 ctermfg=white
+hi Folded     term=standout ctermbg=0 ctermfg=white
 hi FoldColumn term=standout ctermbg=16 ctermfg=2
 " 欲を言うなら，fold しても1行目の構文ハイライトは維持したい。
 
-
-" https://h2plus.biz/hiromitsu/entry/674
-" カラースキームをまとめたサイト
+hi Pmenu    ctermfg=255 ctermbg=17
+hi PmenuSel ctermfg=255 ctermbg=27
 
 hi MatchParen ctermbg=240
-
-hi spellbad NONE
-hi SpellCap NONE
-hi SpellRare NONE
-hi SpellLocal NONE
 
 set cursorline
 hi clear CursorLine
