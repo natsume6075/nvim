@@ -23,6 +23,8 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
   call dein#add('Shougo/deol.nvim')
 
   call dein#add('osyo-manga/vim-anzu')
+  " call dein#add('bronson/vim-trailing-whitespace')
+
 
   call dein#add('plasticboy/vim-markdown')
   call dein#add('kannokanno/previm')
@@ -35,12 +37,13 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
   call dein#add('ujihisa/unite-colorscheme')
   call dein#add('KeitaNakamura/tex-conceal.vim')
   call dein#add('kakkyz81/evervim')
-  call dein#add('tpope/vim-surround')
   call dein#add('tyru/caw.vim')
+  call dein#add('altercation/vim-colors-solarized')
+
   " " call dein#add('powerline/fonts')
   " call dein#add('Lokaltog/vim-powerline')
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('vim-airline/vim-airline-themes')
+  " call dein#add('vim-airline/vim-airline')
+  " call dein#add('vim-airline/vim-airline-themes')
   " call dein#add('vim-jp/vimdoc-ja')
   " call dein#add('thinca/vim-ft-help_fold')
   call dein#add('tpope/vim-fugitive')
@@ -48,8 +51,10 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
 
   call dein#add('lervag/vimtex')
   call dein#add('cohama/lexima.vim')
+  call dein#add('tpope/vim-surround')
   call dein#add('jceb/vim-orgmode')
   call dein#add('mattn/calendar-vim')
+  call dein#add('dhruvasagar/vim-table-mode')
 
   " Required :
   call dein#end()

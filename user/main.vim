@@ -1,50 +1,24 @@
+" --- variables:        --------------------{{{
+let current_file_pass = expand("%")
+let current_file_name = substitute(expand("%:p"), "^.*/", "", "g")
+let current_dir       = substitute(expand("%:p"), "/[^/]*$", "", "g")
 
-
-
-set wildmenu
-set wildmode=longest,full
-" unix では comment out しないと^I が入力され補完されない
-" set wildchar=<C-l>
-nmap <silent> <C-h>        :bprevious<CR>
-nmap <silent> <C-l>        :bnext<CR>
-
-" --- small trick: -----------------------------------------{{{
-" delete only last char in current line
-nnoremap <silent>d, :
-      \:let save_curpos = getcurpos()<CR>
-      \A<C-h><ESC>
-      \:call setpos('.', save_curpos)<CR>
-
-nnoremap <expr> Ssub Move_cursor_pos_mapping(":%s/<C-r>0/<C-r>0<CURSOR>/g")
-vnoremap <expr> Ssub Move_cursor_pos_mapping(":s/<C-r>0/<C-r>0<CURSOR>/g")
+let save_curpos = getcurpos()
 "}}}
 
-command! Init e  ~/.config/nvim/init.vim
-
-
-
-" --- Global Functions: --------------------{{{
-let save_curpos = getcurpos()
-let $CURRENT_FILE_PASS = expand("%")
-let $CURRENT_FILE_NAME = substitute(expand("%:p"), "^.*/", "", "g")
-let $CURRENT_DIR       = substitute(expand("%:p"), "/[^/]*$", "", "g")
-let save_curpos = getcurpos()
-
-
-" pos は配列で，その扱いがおかしいっぽい？
-function! g:Set_curpos() abort
-  call setpos('.', save_curpos)
-endfunction
-
+" --- Functions:        --------------------{{{
+" カーソル位置と command line に打ち込む文字列を指定する
+" Ref: http://d.hatena.ne.jp/osyo-manga/20130424/1366800441
+" example:
+"     vnoremap <expr> <Leader>sub Move_cursor_pos_mapping(":s/<C-r>0/<C-r>0<CURSOR>/g")
 function! s:move_cursor_pos_mapping(str, ...)
-  let left = get(a:, 1, "<Left>")
-  let lefts = join(map(split(matchstr(a:str, '.*<Cursor>\zs.*\ze'), '.\zs'), 'left'), "")
-  return substitute(a:str, '<Cursor>', '', '') . lefts
+    let left = get(a:, 1, "<Left>")
+    let lefts = join(map(split(matchstr(a:str, '.*<Cursor>\zs.*\ze'), '.\zs'), 'left'), "")
+    return substitute(a:str, '<Cursor>', '', '') . lefts
 endfunction
 function! Move_cursor_pos_mapping(str)
-  return s:move_cursor_pos_mapping(a:str, "\<Left>")
+    return s:move_cursor_pos_mapping(a:str, "\<Left>")
 endfunction
-" Ref: http://d.hatena.ne.jp/osyo-manga/20130424/1366800441
 "}}}
 
 " --- Global Settings: ---------------------{{{
@@ -74,11 +48,17 @@ set scrolloff=2
 set undodir=$XDG_DATA_HOME/nvim/undo
 set undofile
 set undolevels=1000
+
+autocmd initvim VimEnter *
+            \ if isdirectory(expand('$XDG_DATA_HOME/nvim/undo')) == 0 |
+            \     echomsg "notice: undo directory is not exist" |
+            \ endif
 "}}}
 
 " --- Yank, Paste, Resisters ---------------{{{
 autocmd initvim TextYankPost *
-      \ echomsg "yank"string(v:event.regcontents)" to reg: ".v:event.regname
+            \ echomsg "yank"string(v:event.regcontents)" to reg: ".v:event.regname
+" buffer 間で reg を共有するための記述
 autocmd initvim TextYankPost * :wv
 autocmd initvim FocusGained * :rv!
 " }}}
@@ -114,12 +94,16 @@ set ruler
 set laststatus=2
 " }}}
 
-" --- Tab / invisible character ------------{{{
+" --- Tab / Indent / invisible character ---{{{
+set tabstop=4
+set softtabstop=0
+set shiftwidth=0
 set expandtab
-set tabstop=2
-set shiftwidth=2
+set smarttab
+
 set autoindent
 set smartindent
+
 " タブを >--- 行末の半スペを . で表示する
 set list
 set listchars=tab:>-,trail:.
@@ -137,34 +121,3 @@ set hlsearch
 " If true Vim master, use English help file.
 set helplang& helplang=ja,en
 "}}}
-
-
-" ---------------------------------------
-"  Commands Settings:
-" ---------------------------------------
-"{{{
-command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
-      \ | diffthis | wincmd p | diffthis
-
-" 文字数をカウンティングする
-command! Cou :%s/.//gn
-
-
-"}}}
-
-" ---------------------------------------
-"  Autocmd:
-" ---------------------------------------
-"{{{
-" maintain cursor position
-autocmd initvim BufReadPost *
-      \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-      \   exe "normal! g'\"" |
-      \ endif
-autocmd initvim BufWritePre * let &bex = '.' . strftime("%Y%m%d_%H%M%S")
-
-" init.vim を保存したときにリロード
-autocmd initvim BufWritePost $XDG_CONFIG_HOME/nvim/init.vim so $XDG_CONFIG_HOME/nvim/init.vim
-"}}}
-
-
