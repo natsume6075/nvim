@@ -6,7 +6,7 @@ augroup ime
     elseif has('mac')
       call system("osascript -e 'tell application \"System Events\" to key code 102' &")
     elseif has('unix')
-      call system('AutoHotkeyU64.exe "/UserArea/J0129312/Documents/ime_off.ahk"')
+      call system('AutoHotkeyU64.exe "$XDG_CONFIG_HOME/nvim/user_local/ime_off.ahk"')
     else
       echo "not defined"
     endif
@@ -18,7 +18,7 @@ augroup ime
     elseif has('mac')
       call system("osascript -e 'tell application \"System Events\" to key code 104' &")
     elseif has('unix')
-      call system('AutoHotkeyU64.exe "/UserArea/J0129312/Documents/ime_on.ahk"')
+      call system('AutoHotkeyU64.exe "$XDG_CONFIG_HOME/nvim/user_local/ime_on.ahk"')
     else
       echo "not defined"
     endif
