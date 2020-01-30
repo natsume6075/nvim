@@ -1,1 +1,1 @@
-nmap <silent> <C-_> <plug>(caw:hatpos:toggle)
+nmap <silent> <C-/> <plug>(caw:hatpos:toggle)
