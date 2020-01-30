@@ -27,7 +27,8 @@ augroup ime
 
   autocmd InsertLeave * call Ime_off()
 
-  imap <silent>っj <ESC>
-  imap <silent> jj <ESC>
+  imap <silent>っj  <ESC>
+  imap <silent>っｊ <ESC>
+  imap <silent> jj  <ESC>
 
 augroup END
