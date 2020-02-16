@@ -44,7 +44,7 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
   call dein#add('altercation/vim-colors-solarized')
   call dein#add('yasukotelin/shirotelin')
 
-  " " call dein#add('powerline/fonts')
+  " call dein#add('powerline/fonts')
   " call dein#add('Lokaltog/vim-powerline')
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
