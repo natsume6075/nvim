@@ -1,4 +1,3 @@
-
 " ---------------------------------------
 "  Key Map (n):
 " ---------------------------------------
@@ -30,7 +29,6 @@ nnoremap <silent> zc zc
 nnoremap <silent> zC zC
 nnoremap <silent> zi zi
 " なにかつぶした
-nnoremap <silent> zh zMzv
 nnoremap <silent> za zR
 nnoremap <silent> zA zM
 nnoremap <silent> zj :<C-u>call <SID>smart_foldjump('j')<CR>
@@ -69,16 +67,7 @@ endfunction
 
 " }}}
 
-
-" about pain --------------------- {{{
-" split pain horizontally/vertically
-nnoremap <silent> Sb :5split<CR>:enew<CR>
-
-" ------------------------------------------------------------------------------------------------------------------
 " about buffer (airline) ---------------------{{{
-" new buffer
-" nnoremap <silent> <Leader>n :tabnew<CR>
-" show preious/next buffer
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -112,28 +101,11 @@ endfunction
 
 
 
-" function key
-" default: map <f1> to display the help file
-" map <f2> to toggle show Information
-nnoremap <f2> :
-      \:set cursorcolumn!<CR>
-
-" map <f5> to edit init.vim
-nnoremap <f4> :<C-u>.tabedit $XDG_CONFIG_HOME/nvim/init.vim<CR>
-" map <f5> to source init.vim
-nnoremap <f5> :<C-u>source $XDG_CONFIG_HOME/nvim/init.vim<CR>
-
-" map language_specific/global dictionary
+" map <f6>/<f18> to add language_specific/global dictionary
 nnoremap <f6>  :<C-u>.tabedit $LANG_DICTIONARY<CR>:sort u<CR>:w<CR>
 vnoremap <f6>  "zy :!echo <C-r>z>> $LANG_DICTIONARY<CR><CR>
 nnoremap <f18> :<C-u>.tabedit $GLOBAL_DICTIONARY<CR>:sort u<CR>:w<CR>
 vnoremap <f18> "zy :!echo <C-r>z>> $GLOBAL_DICTIONARY<CR><CR>
-" map language_specific/global neosnippet edit
-nnoremap <f7>  :NeoSnippetEdit -horizontal<CR>
-xnoremap <f7>  y :NeoSnippetEdit -horizontal<CR>Gp
-nnoremap <f19> :<C-u>.tabedit $XDG_CONFIG_HOME/nvim/my_snippets/_.snip<CR>
-xnoremap <f19> y :<C-u>.tabedit $XDG_CONFIG_HOME/nvim/my_snippets/_.snip<CR>Gp
-
 " <f11> conceal syntax の呼び出し（vim）
 autocmd initvim filetype tex  nnoremap <f11>
       \ :<C-u>.tabedit $XDG_CACHE_HOME/dein/repos/github.com/keitanakamura/tex-conceal.vim/after/syntax/tex.vim<CR>
@@ -147,15 +119,12 @@ nnoremap <f12> :
       \:endif<CR>
       \<CR>
 
-"}}}
+" }}} 
 
-}}} 
 " ---------------------------------------
 "  Key Map (c):
 " ---------------------------------------
 "{{{
-cnoremap jj <C-c>
-cnoremap <C-a> <HOME>
 cnoremap <C-y> <HOME>bufdo :
 "}}}
 
@@ -169,9 +138,7 @@ vnoremap  *  "zy/\V<C-r>z<CR>
 vnoremap <C-Up> "zx<Up>"zP`[V`]
 vnoremap <C-Down> "zx"zp`[V`]
 
-vnoremap cou :s/.//gn<CR>
 
-vmap <silent> <C-_> <plug>(caw:hatpos:toggle)
 
 " vnoremap Y :<BS><BS><BS><BS><BS>
 vnoremap Y "*y
@@ -189,13 +156,8 @@ vnoremap Y "*y
 "  Key Map (i):
 " ---------------------------------------
 "{{{
-noremap! <C-d> <Del>
-" spell
-inoremap <C-s> <C-x>s
-
 inoremap <silent> <C-f> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>RIGHT>')<CR>
 
-" inoremap <C-> Match_Paren()
 
 
 
@@ -265,14 +227,6 @@ set concealcursor=""
 "{{{
 " deoplete --------------------- {{{
 
-if !has('nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
-endif
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_complete_start_length = 1
 "let g:neocomplcache_enable_auto_select = 1
 
 call deoplete#custom#source('_', 'matchers'  ,  ['matcher_head']) "完全一致だけ
@@ -292,13 +246,10 @@ endfunction"}}}
 " 選択を tab キーで行う。単語の後ろで tab キーを押すと deoplete を呼び出す（無効化）
 " inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <sid>Check_back_space() ? "\<TAB>" : deoplete#mappings#manual_complete()
 inoremap <expr> <TAB>   pumvisible() ? deoplete#complete_common_string() : "\<TAB>"
-inoremap <expr> <S-TAB> deoplete#refresh().deoplete#smart_close_popup()
 "}}}
 
 " neosnippet --------------------- {{{
-let g:neosnippet#snippets_directory='$XDG_CONFIG_HOME/nvim/my_snippets'
 
-" note: it must be "imap" and "smap".  It uses <plug> mappings.
 " a<C-h> の理由：
 "   例えば { を使ったマッピングがある影響で { を入力すると待機モードになる。
 "   待機モードで expand を呼び出しても即座に展開はされず，二度押しが必要だった。
@@ -306,44 +257,11 @@ let g:neosnippet#snippets_directory='$XDG_CONFIG_HOME/nvim/my_snippets'
 "   一旦適当な文字 a を打ってそれを消す操作を挟むことで，一度押しでいけるようにした。
 " 内部的にインサートモードを抜けるので，InsertLeave が発火する。
 
-" 一番上の expand できるキーワードでスニペットを展開する
-imap <expr> œ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" : pumvisible() ? Finite_increase_pum() : ""
-" imap <expr> œ neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" : pumvisible() ? Finite_increase_pum() : "œ"
-function! Finite_increase_pum()"{{{
-  if g:counter < 100
-    let g:counter += 1
-    return "\<C-n>œ"
-  else
-    let g:counter = 0
-    return "\<S-TAB>"
-  endif
-endfunction
-let counter = 0
-"}}}
-function! Finite_increase_pum_copy()"{{{
-  if g:counter < 100
-    let g:counter += 1
-    return "\<C-n>œ"
-  else
-    let g:counter = 0
-    return "\<S-TAB>"
-  endif
-endfunction
-let counter = 0
-"}}}
 
-vmap <C-k>     <plug>(neosnippet_expand_target)
-" vmap <C-k     <plug>(neosnippet_expand_target)
-imap <expr> <C-i>   deoplete#complete_common_string()
-"imap <hoge>    <plug>(neosnippet_start_unite_snippet)
 "}}}
 
 
 
-" caw : commentout------------- {{{
-let g:caw_no_default_keymappings = 1
-" let g:caw_operator_keymappings   = 0
-" }}}
 
 " evervim --------------------- {{{
 " let g:evervim_devtoken='S=s1:U=950c7:E=17007f452d0:C=168b0432528:P=1cd:A=en-devtoken:V=2:H=708160efd6d58adcc078a7f8ea1c5563'

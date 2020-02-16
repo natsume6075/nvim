@@ -194,7 +194,7 @@ Colemak
 nmap
 j
 anzu
-noremap
+#oremap
 gj
 keepjumps
 xnoremap
@@ -313,3 +313,15 @@ unicode
 tagbar
 tabline
 fnamemod
+UI
+vim
+ginit
+config
+nvim
+karabiner
+denite
+defx
+lexima
+noremap/!
+let
+quickrun

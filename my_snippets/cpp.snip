@@ -1,0 +1,17 @@
+snippet     cin
+options     word
+    ${1:#:type} ${2:#:val}; cin >> $2;${0}
+
+snippet     cout
+options     word
+    cout << ${1} << endl;${0}
+
+snippet     vector
+options     word
+    vector<$1> $2($3);$0
+
+snippet     auto
+options     head
+    auto ${1:#:function_name} = [&](${2:#:args}) {
+    	return 0;
+    };

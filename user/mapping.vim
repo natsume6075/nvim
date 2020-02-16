@@ -56,6 +56,8 @@ nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
 
+nnoremap zh zMzv
+
 nnoremap <C-p> :<C-p>
 nnoremap <silent> <ESC> :nohl<CR><ESC>
 nnoremap <silent> <C-c> :nohl<CR><C-c>
@@ -87,6 +89,22 @@ function! Open_reference_OR_URL() abort" {{{
 endfunction
 " }}}
 
+
+" ------------ function key ------------------{{{
+" default: map <f1> to display the help file
+" map <f2> to toggle show Information
+nnoremap <f2> :
+      \:set cursorcolumn!<CR>
+" map <f4> to edit init.vim
+nnoremap <f4> :<C-u>.tabedit $XDG_CONFIG_HOME/nvim/init.vim<CR>
+" map <f5> to source init.vim
+nnoremap <f5> :<C-u>source $XDG_CONFIG_HOME/nvim/init.vim<CR>
+" map language_specific/global neosnippet edit
+nnoremap <f7>  :NeoSnippetEdit -horizontal<CR>
+xnoremap <f7>  y :NeoSnippetEdit -horizontal<CR>Gp
+nnoremap <f19> :<C-u>.tabedit $XDG_CONFIG_HOME/nvim/my_snippets/_.snip<CR>
+xnoremap <f19> y :<C-u>.tabedit $XDG_CONFIG_HOME/nvim/my_snippets/_.snip<CR>Gp
+"}}}
 "}}}
 
 " --- vmap --------------------------------------------------{{{
@@ -98,26 +116,41 @@ vnoremap <expr> _  Open_reference_OR_URL()
 " --- map! --------------------------------------------------{{{
 map! jj <ESC>
 map! ｊｊ <ESC>
+
 "}}}
 
 " --- imap --------------------------------------------------{{{
-imap <expr> <C-l>   (neosnippet#jumpable() ? "\<plug>(neosnippet_jump)" : pumvisible() ? deoplete#close_popup() : "\<Tab>")
+inoremap    <C-a> <C-g>U<Home>
+inoremap    <C-b> <C-g>U<left>
+inoremap    <C-d> <C-g>U<Del>
+inoremap    <C-e> <C-g>U<End>
+inoremap    <C-f> <C-g>U<Right>
+inoremap    <C-i> <C-d>
+inoremap    <C-k> <C-g>Ud$
+imap <expr> <C-l> (neosnippet#jumpable() ? "\<plug>(neosnippet_jump)" : pumvisible() ? deoplete#close_popup() : "\<Tab>")
+inoremap    <C-n> <C-g>U<Down>
+inoremap    <C-p> <C-g>U<Up>
+
+" spell
+inoremap <C-s> <C-x>s
+"}}}
+
+" --- cmap --------------------------------------------------{{{
+cnoremap    <C-a> <Home>
+cnoremap    <C-b> <left>
+cnoremap    <C-d> <Del>
+cnoremap    <C-e> <End>
+cnoremap    <C-f> <Right>
+cnoremap    <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
+cnoremap    <C-n> <Down>
+cnoremap    <C-p> <Up>
 
 "}}}
 
+" --- cmap --------------------------------------------------{{{
+tnoremap <silent> <ESC> <C-\><C-n>
 
-
-
-inoremap <C-a> <Home>
-" " アンドゥを抜けないで左に動かす．
-inoremap <C-b> <C-g>U<left>
-" inoremap <C-b> <Left>
-inoremap <C-d> <Del>
-inoremap <C-e> <End>
-inoremap <C-f> <Right>
-inoremap <C-k> d$
-inoremap <C-n> <Down>
-inoremap <C-p> <Up>
+"}}}
 
 
 

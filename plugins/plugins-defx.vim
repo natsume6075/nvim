@@ -1,19 +1,20 @@
-nnoremap <silent> <C-f> :Defx<CR>
+nnoremap <silent> <C-f>
+            \ :Defx<CR>
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
   " Define mappings
-  nnoremap <silent><buffer><expr> <C-f>
+  nnoremap <buffer><expr> <C-f>
         \ defx#do_action('change_vim_cwd')
         \ .defx#do_action('quit')
-  nnoremap <silent><buffer><expr> q
+  nnoremap <buffer><expr> q
         \ defx#do_action('quit')
   nnoremap <silent><buffer><expr> o
         \ defx#do_action('change_vim_cwd')
         \ .defx#do_action('open')
   nnoremap <silent><buffer><expr> O
         \ defx#do_action('open')
-  nnoremap <silent><buffer><expr> cd
+  nnoremap <buffer><expr> cd
         \ defx#do_action('change_vim_cwd')
   nnoremap <silent><buffer><expr> h
         \ defx#do_action('cd', ['..'])
@@ -21,13 +22,15 @@ function! s:defx_my_settings() abort
         \ defx#do_action('open_directory')
   nnoremap <silent><buffer><expr> l
         \ defx#do_action('open')
-  nnoremap <silent><buffer><expr> .
-        \ defx#do_action('cd', [expand($CURRENT_DIR)])
-  nnoremap <silent><buffer><expr> ~
+  nnoremap <buffer><expr> .
+        \ defx#do_action('cd', [substitute(expand("%:p"), "/[^/]*$", "", "g")])
+  nnoremap <buffer><expr> %
+        \ defx#do_action('cd', tmp)
+  nnoremap <buffer><expr> ~
         \ defx#do_action('cd')
-  nnoremap <silent><buffer><expr> a
+  nnoremap <buffer><expr> a
         \ defx#do_action('toggle_ignored_files')
-  nnoremap <silent><buffer><expr> S
+  nnoremap <buffer><expr> S
         \ defx#do_action('toggle_sort', 'Time')
 
   nnoremap <silent><buffer><expr> c
