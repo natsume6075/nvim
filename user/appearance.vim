@@ -36,6 +36,9 @@ hi PmenuSel ctermfg=255 ctermbg=27
 
 hi MatchParen ctermbg=240
 
+hi SpellBad None
+hi SpellCap None
+hi SpellRare None
 set cursorline
 hi clear CursorLine
 hi CursorColumn ctermbg=0
