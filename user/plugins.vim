@@ -85,3 +85,4 @@ endif
 let g:deoplete#enable_at_startup = 1
 
 " call map(dein#check_clean(), "delete(v:val, 'rf')")
+
