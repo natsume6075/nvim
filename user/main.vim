@@ -97,7 +97,7 @@ set laststatus=2
 " --- Tab / Indent / invisible character ---{{{
 set tabstop=4
 set softtabstop=0
-set shiftwidth=0
+set shiftwidth=0     " 改行やコマンドでのインデント幅。0だとtabstopの値を使う
 set expandtab
 set smarttab
 

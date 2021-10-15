@@ -120,16 +120,7 @@ map! ｊｊ <ESC>
 "}}}
 
 " --- imap --------------------------------------------------{{{
-inoremap    <C-a> <C-g>U<Home>
-inoremap    <C-b> <C-g>U<left>
-inoremap    <C-d> <C-g>U<Del>
-inoremap    <C-e> <C-g>U<End>
-inoremap    <C-f> <C-g>U<Right>
-inoremap    <C-i> <C-d>
-inoremap    <C-k> <C-g>Ud$
 imap <expr> <C-l> (neosnippet#jumpable() ? "\<plug>(neosnippet_jump)" : pumvisible() ? deoplete#close_popup() : "\<Tab>")
-inoremap    <C-n> <C-g>U<Down>
-inoremap    <C-p> <C-g>U<Up>
 
 " spell
 inoremap <C-s> <C-x>s
