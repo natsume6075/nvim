@@ -1,8 +1,8 @@
 " deoplete ---------------------
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_complete_start_length = 1
+call deoplete#custom#option('auto_complete_delay', 0)
+call deoplete#custom#option('min_pattern_length', 1)
 
 inoremap <expr> <S-TAB> deoplete#refresh().deoplete#smart_close_popup()
 
