@@ -7,14 +7,11 @@ call deoplete#custom#option('min_pattern_length', 1)
 
 
 inoremap <expr> <S-TAB> deoplete#smart_close_popup()
-
-" imap <expr> <C-l> (neosnippet#jumpable() ? "\<plug>(neosnippet_jump)" : pumvisible() ? deoplete#close_popup() : "\<Tab>")
-
-" 一番上の expand できるキーワードでスニペットを展開する
 imap <expr> <C-k> neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
             \ pumvisible() ? Finite_increase_pum() :
-            \ ""
+            \ "\<Plug>(neosnippet_jump)"
 
+" 一番上の expand できるキーワードでスニペットを展開する
 function! Finite_increase_pum()"{{{
     if g:counter < 100
         let g:counter += 1
@@ -26,7 +23,6 @@ function! Finite_increase_pum()"{{{
 endfunction
 let counter = 0
 "}}}
-
 
 vmap <C-k>     <plug>(neosnippet_expand_target)
 
