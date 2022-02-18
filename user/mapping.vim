@@ -120,8 +120,6 @@ map! ｊｊ <ESC>
 "}}}
 
 " --- imap --------------------------------------------------{{{
-imap <expr> <C-l> (neosnippet#jumpable() ? "\<plug>(neosnippet_jump)" : pumvisible() ? deoplete#close_popup() : "\<Tab>")
-
 " spell
 inoremap <C-s> <C-x>s
 "}}}
