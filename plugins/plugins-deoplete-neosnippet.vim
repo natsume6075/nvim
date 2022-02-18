@@ -5,6 +5,8 @@ let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('auto_complete_delay', 0)
 call deoplete#custom#option('min_pattern_length', 1)
 
+" Right でトップ候補を保管 (fish意識)
+imap <expr> <Right> pumvisible() ? "\<C-n>\<C-m>" : "\<Right>"
 
 inoremap <expr> <S-TAB> deoplete#smart_close_popup()
 imap <expr> <C-k> neosnippet#expandable() ? "\<Plug>(neosnippet_expand)" :
