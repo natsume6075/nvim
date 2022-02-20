@@ -8,7 +8,8 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
   call dein#begin('$XDG_CACHE_HOME/dein')
 
   " Let dein manage dein
-  call dein#add('$XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim')
+  " 2022-02-20 許さない。dein をアップデートしたらプラグインが無効化されるバグに見舞われたので。
+  " call dein#add('$XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim')
 
   " core plugin
   call dein#add('Shougo/deoplete.nvim')
@@ -27,7 +28,6 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
 
   call dein#add('osyo-manga/vim-anzu')
   " call dein#add('bronson/vim-trailing-whitespace')
-
 
   call dein#add('plasticboy/vim-markdown')
   call dein#add('kannokanno/previm')
