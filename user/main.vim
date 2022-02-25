@@ -39,7 +39,7 @@ set spelllang=en,cjk
 " --- Motion -------------------------------{{{
 set whichwrap=<,>,[,]
 set backspace=indent,eol,start
-set mouse=a
+set mouse=
 set virtualedit=block
 set scrolloff=2
 "}}}
