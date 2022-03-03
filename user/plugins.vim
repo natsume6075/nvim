@@ -29,7 +29,6 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
   call dein#add('osyo-manga/vim-anzu')
   " call dein#add('bronson/vim-trailing-whitespace')
 
-  call dein#add('plasticboy/vim-markdown')
   call dein#add('kannokanno/previm')
   call dein#add('iamcco/markdown-preview.vim')
   call dein#add('scrooloose/nerdcommenter')
@@ -56,8 +55,10 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
   call dein#add('lervag/vimtex')
   call dein#add('cohama/lexima.vim')
   call dein#add('tpope/vim-surround')
-  call dein#add('jceb/vim-orgmode')
   call dein#add('mattn/calendar-vim')
+
+  " --- language specific --- "
+  call dein#add('plasticboy/vim-markdown')
   call dein#add('dhruvasagar/vim-table-mode')
 
   " Required :
