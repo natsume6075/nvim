@@ -1,0 +1,43 @@
+snippet     cin
+options     word
+    cin >> ${1};${0}
+
+snippet     cout
+options     word
+    cout << ${1} << endl;${0}
+
+snippet     vector
+options     word
+    vector<$1> $2($3);$0
+
+snippet     auto
+options     head
+    auto ${1:#:function_name} = [&](${2:#:args}) {
+    	return 0;
+    };
+
+snippet     kyopro
+options     head
+    #include <bits/stdc++.h>
+    #define rep(i,n) for (int i = 0; i < (n); ++i)
+    using namespace std;
+    typedef long long  ll;
+
+    #define vi vector<int>
+    #define vl vector<ll>
+    #define vvi vector<vector<int>>
+    #define vvl vector<vector<ll>>
+    // constexpr ll mod = 1e9 + 7;
+
+    int main(){
+        int N, W;
+        cin >> N >> W;
+
+        vector<int> v(N), w(N);
+        rep(i,N) cin >> v[i], cin >> w[i];
+
+        ${0}
+
+    return 0;
+    }
+
