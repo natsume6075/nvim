@@ -13,7 +13,7 @@ hi def LogI_color ctermfg=blue guifg=blue
 hi def LogD_color ctermfg=darkgreen guifg=darkgreen
 hi def LogV_color ctermfg=gray guifg=gray
 
-" Define essential
+" Define common words
 syn keyword boolean true false Enable Disable enable disable
 syn match float "\<\d\+\(\.\d\+\)*\>"
 syn match string "\"\w*\""
@@ -33,7 +33,7 @@ syn match LogV ' V '
 syn match Time '^[0-9|-]* [0-9|:|.]*'
 
 " developmental keyword
-syn keyword keyword_ppp getDataSharingParameter isDataSharingSettingAllEnabled PrivacyActivity getShowDataSharingParameter PrivacyManagerService isPrivacyProtectionSupported checkUploadPermission
+syn keyword keyword_ppp getDataSharingParameter DataSharingSettingAllEnabled PrivacyActivity getShowDataSharingParameter PrivacyManagerService isPrivacyProtectionSupported checkUploadPermission
 syn keyword keyword_tsu TsuConnectionStateMachine
 
 hi def link LogF ErrorMsg
