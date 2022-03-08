@@ -34,6 +34,7 @@ syn match Time '^[0-9|-]* [0-9|:|.]*'
 
 " developmental keyword
 syn keyword keyword_ppp getDataSharingParameter isDataSharingSettingAllEnabled PrivacyActivity getShowDataSharingParameter PrivacyManagerService isPrivacyProtectionSupported checkUploadPermission
+syn keyword keyword_tsu TsuConnectionStateMachine
 
 hi def link LogF ErrorMsg
 hi def link LogE ErrorMsg
@@ -45,4 +46,5 @@ hi def link Time NonText
 hi def link File Type
 hi def link boolean Boolean
 hi def link keyword_ppp Keyword
+hi def link keyword_tsu Keyword
 
