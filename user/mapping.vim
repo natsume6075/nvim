@@ -102,8 +102,8 @@ nnoremap <f5> :<C-u>source $XDG_CONFIG_HOME/nvim/init.vim<CR>
 " map language_specific/global neosnippet edit
 nnoremap <f7>  :NeoSnippetEdit -horizontal<CR>
 xnoremap <f7>  y :NeoSnippetEdit -horizontal<CR>Gp
-nnoremap <f19> :<C-u>.tabedit $XDG_CONFIG_HOME/nvim/my_snippets/_.snip<CR>
-xnoremap <f19> y :<C-u>.tabedit $XDG_CONFIG_HOME/nvim/my_snippets/_.snip<CR>Gp
+nnoremap <f19> :NeoSnippetEdit -horizontal _<CR>
+xnoremap <f19> y :NeoSnippetEdit -horizontal _<CR>Gp
 "}}}
 "}}}
 
