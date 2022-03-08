@@ -65,3 +65,7 @@ elseif has("win32unix")
 elseif has("win32")
     runtime! user_local/win32.vim
 endif
+
+" 以下は runtimepath に after/ が入っているので不要なはずだが...
+runtime! after/*.vim
+

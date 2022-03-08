@@ -15,8 +15,8 @@
 " colorscheme desert
 " colorscheme hybrid_reverse
 " colorscheme hybrid
-" colorscheme japanesque
-colorscheme atom
+colorscheme japanesque
+" colorscheme atom
 " colorscheme solarized
 
 " hi Visual ctermbg = 8
