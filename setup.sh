@@ -22,7 +22,7 @@ mkdir -p ~/.local/share/nvim/undo
 
 # If necessary, install dein.
 if ! GetConfirmation "Install dein?" ; then
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+    curl -sSL https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
     sh ./installer.sh ~/.cache/dein
     rm ./installer.sh
 fi
