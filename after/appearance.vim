@@ -33,6 +33,9 @@ colorscheme japanesque
 " 
 " hi MatchParen ctermbg=240
 " 
+hi clear Search
+hi Search ctermbg=yellow
+
 hi SpellBad None
 hi SpellCap None
 hi SpellRare None
