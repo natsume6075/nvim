@@ -8,8 +8,7 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
   call dein#begin('$XDG_CACHE_HOME/dein')
 
   " Let dein manage dein
-  " 2022-02-20 許さない。dein をアップデートしたらプラグインが無効化されるバグに見舞われたので。
-  " call dein#add('$XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('$XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim')
 
   " core plugin
   call dein#add('Shougo/deoplete.nvim')
