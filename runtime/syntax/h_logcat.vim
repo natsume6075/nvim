@@ -33,7 +33,7 @@ syn match LogV ' V '
 syn match Time '^[0-9|-]* [0-9|:|.]*'
 
 " developmental keyword
-syn keyword keyword_ppp getDataSharingParameter DataSharingSettingAllEnabled PrivacyActivity getShowDataSharingParameter PrivacyManagerService isPrivacyProtectionSupported checkUploadPermission
+syn keyword keyword_ppp getDataSharingParameter DataSharingSettingAllEnabled PrivacyActivity getShowDataSharingParameter PrivacyManagerService isPrivacyProtectionSupported checkUploadPermission setPrivacySettingValues getPrivacySettingValues setPrivacySettingList
 syn keyword keyword_tsu TsuConnectionStateMachine
 
 hi def link LogF ErrorMsg
