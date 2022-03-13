@@ -20,10 +20,12 @@ ln -sfv $SCRIPT_DIR ~/.config/
 mkdir -p ~/.local/share/nvim/backup
 mkdir -p ~/.local/share/nvim/undo
 
-# If necessary, install dein.
+# If necessary, install dein (and pynvim).
 if ! GetConfirmation "Install dein?" ; then
     curl -sSL https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
     sh ./installer.sh ~/.cache/dein
     rm ./installer.sh
+
+    pip3 install --user pynvim
 fi
 
