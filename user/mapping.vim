@@ -65,6 +65,9 @@ nnoremap <silent> <C-{> :nohl<CR><C-{>
 nmap <silent> <C-h>        :bprevious<CR>
 nmap <silent> <C-l>        :bnext<CR>
 
+" terminal を下部に表示する
+" nnoremap <C-t> :split | wincmd j | resize 20 | terminal
+
 " 文字数をカウンティングする
 nnoremap <Leader>cou :%s/.//gn
 nnoremap <Leader>con J
@@ -136,11 +139,8 @@ cnoremap    <C-p> <Up>
 
 "}}}
 
-" --- cmap --------------------------------------------------{{{
-tnoremap <silent> <ESC> <C-\><C-n>
+" --- tmap --------------------------------------------------{{{
+tnoremap <ESC> <C-\><C-n>
 
 "}}}
-
-
-
 
