@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/mnt/d/UserArea/J0129312/Dropbox'
+let g:netrw_dirhist_9='/mnt/d/UserArea/J0129312/Dropbox/fish'
+let g:netrw_dirhist_8='/mnt/d/UserArea/J0129312/OneDrive - Honda/work/pdp/23M/verification/logs/1110/makerLog/logcat'
+let g:netrw_dirhist_7='/mnt/d/UserArea/J0129312/Documents/log/Log_20220228_181328_6/makerLog'
+let g:netrw_dirhist_6='/mnt/d/UserArea/J0129312/Documents/log/Log_20220228_181328_6/makerLog/logcat'
+let g:netrw_dirhist_5='/mnt/d/UserArea/J0129312/Dropbox/nvim/user'
+let g:netrw_dirhist_4='/mnt/d/UserArea/J0129312/Desktop/S10-3_UserDebug版_20220307/2回目/FDR後/Log_20220307_003612_3/makerLog'
+let g:netrw_dirhist_3='/mnt/d/UserArea/J0129312/Documents/log/Log_20220224_215522_2/Log_20220224_215522_2/makerLog/bluetooth/logs'
+let g:netrw_dirhist_2='/mnt/d/UserArea/J0129312/Documents/log/Log_20220224_215522_2/Log_20220224_215522_2/makerLog/bluetooth'
+let g:netrw_dirhist_1='/mnt/d/UserArea/J0129312/Documents/log/Log_20220224_215522_2/Log_20220224_215522_2/makerLog'
