@@ -22,13 +22,13 @@ let maplocalleader = ","
 " --- all ---------------------------------------------------{{{
 map  <BS> <C-h>
 map! <BS> <C-h>
+
 "}}}
 
 " --- map ---------------------------------------------------{{{
 noremap H _
 noremap L $
 map gm %
-
 
 " 思い通りになるJK
 noremap <expr>  J     To_bottom_of_window_OR_scroll_next_page()
@@ -93,8 +93,7 @@ function! Open_reference_OR_URL() abort" {{{
 endfunction
 " }}}
 
-
-" ------------ function key ------------------{{{
+" --- function key ------------------------------------------{{{
 " default: map <f1> to display the help file
 " map <f2> to toggle show Information
 nnoremap <f2> :
@@ -108,13 +107,15 @@ nnoremap <f7>  :NeoSnippetEdit -horizontal<CR>
 xnoremap <f7>  y :NeoSnippetEdit -horizontal<CR>Gp
 nnoremap <f19> :NeoSnippetEdit -horizontal _<CR>
 xnoremap <f19> y :NeoSnippetEdit -horizontal _<CR>Gp
+
 "}}}
+
 "}}}
 
 " --- vmap --------------------------------------------------{{{
-
 vnoremap <expr> <Leader>sub Move_cursor_pos_mapping(":s/<C-r>0/<C-r>0<CURSOR>/g")
 vnoremap <expr> _  Open_reference_OR_URL()
+
 "}}}
 
 " --- map! --------------------------------------------------{{{
@@ -126,6 +127,7 @@ map! ｊｊ <ESC>
 " --- imap --------------------------------------------------{{{
 " spell
 inoremap <C-s> <C-x>s
+
 "}}}
 
 " --- cmap --------------------------------------------------{{{
