@@ -15,10 +15,12 @@ function! s:defx_my_settings() abort
         \ defx#do_action('change_vim_cwd')
   nnoremap <silent><buffer><expr> h
         \ defx#do_action('cd', ['..'])
+  " nnoremap <silent><buffer><expr> l
+  "      \ defx#do_action('open_directory')
   nnoremap <silent><buffer><expr> l
-        \ defx#do_action('open_directory')
+        \ defx#do_action('open_or_close_tree')
   nnoremap <silent><buffer><expr> l
-        \ defx#do_action('open')
+        \ defx#do_action('drop')
   nnoremap <buffer><expr> .
         \ defx#do_action('cd', [substitute(expand("%:p"), "/[^/]*$", "", "g")])
   nnoremap <buffer><expr> %
