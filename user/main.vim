@@ -57,8 +57,8 @@ autocmd initvim VimEnter *
 
 " --- Yank, Paste, Resisters ---------------{{{
 " yank したときに内容とディレクトリを echo する
-autocmd initvim TextYankPost *
-            \ echomsg "yank"string(v:event.regcontents)" to reg: ".v:event.regname
+" autocmd initvim TextYankPost *
+"            \ echomsg "yank"string(v:event.regcontents)" to reg: ".v:event.regname
 " buffer 間で reg を共有するための記述
 autocmd initvim TextYankPost * :wv
 autocmd initvim FocusGained * :rv!
