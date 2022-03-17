@@ -4,9 +4,6 @@ nnoremap <silent> <C-f>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
   " Define mappings
-  nnoremap <buffer><expr> <C-f>
-        \ defx#do_action('change_vim_cwd')
-        \ .defx#do_action('quit')
   nnoremap <buffer><expr> q
         \ defx#do_action('quit')
   nnoremap <silent><buffer><expr> o
@@ -83,3 +80,17 @@ call defx#custom#column('mark', {
       \ 'selected_icon': '✓',
       \ })
 
+" Layout at startup.
+call defx#custom#option('_', {
+      \ 'winwidth': 40,
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ 'show_ignored_files': 1,
+      \ 'buffer_name': 'exlorer',
+      \ 'toggle': 1,
+      \ 'resume': 1,
+      \ })
+
+" -floating-preview
+"\ 'split': 'floating',
+"
