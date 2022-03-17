@@ -11,8 +11,9 @@ autocmd initvim BufWritePost $XDG_CONFIG_HOME/nvim/init.vim so $XDG_CONFIG_HOME/
 " デフォルト設定の textwidth 設定上書き
 autocmd initvim VimEnter * setlocal textwidth=0
 
-" *.fish => filetype=sh
+" setfiletype
 autocmd initvim BufNewFile,BufRead *.fish setfiletype sh
+autocmd initvim BufNewFile,BufRead *logcat.log setfiletype h_logcat
 
 " terminal を insert mode ではじめる
 autocmd TermOpen * startinsert
