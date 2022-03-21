@@ -34,13 +34,18 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
   call dein#add('tyru/open-browser.vim')
 
   call dein#add('jonathanfilip/vim-lucius')
-  call dein#add('flazz/vim-colorschemes')
-  call dein#add('ujihisa/unite-colorscheme')
   call dein#add('KeitaNakamura/tex-conceal.vim')
   " call dein#add('kakkyz81/evervim')
   call dein#add('tyru/caw.vim')
+
+  " --- colorschemes --- "
+  call dein#add('ujihisa/unite-colorscheme')
+  call dein#add('flazz/vim-colorschemes')
   call dein#add('altercation/vim-colors-solarized')
+  call dein#add('cocopon/iceberg.vim')
   call dein#add('yasukotelin/shirotelin')
+  call dein#add('whatyouhide/vim-gotham')
+  call dein#add('ulwlu/elly.vim')
 
   " call dein#add('powerline/fonts')
   " call dein#add('Lokaltog/vim-powerline')
