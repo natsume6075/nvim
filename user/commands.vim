@@ -12,10 +12,3 @@ command! -nargs=? Scratch let $DATE = expand(strftime('%Y-%m-%d')) | e $SCRATCHE
 " terminal を下部に表示する TODO すでに開いているならそれを開く
 command! ToggleSplitTerminal if &buftype ==# 'terminal' | q | else | call OpenSplitTerminal() | endif
 
-function! OpenSplitTerminal() abort
-    split
-    wincmd j
-    resize 20
-    terminal
-endfunction
-
