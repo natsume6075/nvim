@@ -6,21 +6,19 @@ function! s:defx_my_settings() abort
     " Define mappings
     nnoremap <buffer><expr> q
                 \ defx#do_action('quit')
-    nnoremap <silent><buffer><expr> o
-                \ defx#do_action('change_vim_cwd')
-                \ .defx#do_action('open')
-    nnoremap <silent><buffer><expr> O
-                \ defx#do_action('open')
+    " nnoremap <silent><buffer><expr> o
+    "            \ defx#do_action('change_vim_cwd')
+    "            \ .defx#do_action('open')
+    " nnoremap <silent><buffer><expr> O
+    "            \ defx#do_action('open')
     nnoremap <buffer><expr> cd
                 \ defx#do_action('change_vim_cwd')
     nnoremap <silent><buffer><expr> h
                 \ defx#do_action('cd', ['..'])
-    " nnoremap <silent><buffer><expr> l
-    "      \ defx#do_action('open_directory')
     nnoremap <silent><buffer><expr> l
-                \ defx#do_action('open_or_close_tree')
-    nnoremap <silent><buffer><expr> l
-                \ defx#do_action('drop')
+                \ defx#is_directory() ?
+                \ defx#do_action('open_or_close_tree', 'recursive:0') :
+                \ defx#do_action('multi', ['quit', 'drop'])
     nnoremap <buffer><expr> .
                 \ defx#do_action('cd', [substitute(expand("%:p"), "/[^/]*$", "", "g")])
     nnoremap <buffer><expr> %
