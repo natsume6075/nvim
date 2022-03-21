@@ -16,7 +16,7 @@ autocmd initvim BufNewFile,BufRead *.fish setfiletype sh
 autocmd initvim BufNewFile,BufRead *logcat.log setfiletype h_logcat
 
 " terminal に入ったとき
-autocmd initvim TermOpen * startinsert
-autocmd initvim TermOpen * set nonu
-autocmd initvim TermOpen * set foldcolumn=0
+" autocmd initvim TermOpen * startinsert
+autocmd initvim TermOpen * setlocal nonu
+autocmd initvim TermOpen * setlocal foldcolumn=0
 
