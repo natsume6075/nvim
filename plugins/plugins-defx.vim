@@ -79,6 +79,9 @@ function! s:defx_my_settings() abort
     nnoremap <silent><buffer><expr> <
                 \ defx#do_action('resize', defx#get_context().winwidth - 10)
 
+    nnoremap <silent><buffer><expr> P
+                \ defx#do_action('preview')
+
 endfunction
 
 " Like Textmate icons.
@@ -90,15 +93,18 @@ call defx#custom#column('mark', {
 
 " Layout at startup.
 call defx#custom#option('_', {
-            \ 'winwidth': 40,
-            \ 'split': 'vertical',
-            \ 'direction': 'topleft',
+            \ 'split': 'floating',
+            \ 'vertical_preview': v:true,
+            \ 'floating_preview': v:true,
+            \ 'preview_width': float2nr(&columns * g:floating_win_width_percent / 2),
+            \ 'preview_height': float2nr(&lines * g:floating_win_height_percent),
+            \ 'wincol': float2nr((&columns - (&columns * g:floating_win_width_percent)) / 2),
+            \ 'winrow': float2nr((&lines - (&lines * g:floating_win_height_percent)) / 2),
+            \ 'winwidth': float2nr(&columns * g:floating_win_width_percent / 2),
+            \ 'winheight': float2nr(&lines * g:floating_win_height_percent),
             \ 'show_ignored_files': 1,
             \ 'buffer_name': 'exlorer',
             \ 'toggle': 1,
             \ 'resume': 1,
             \ })
 
-" -floating-preview
-            "\ 'split': 'floating',
-"
