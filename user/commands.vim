@@ -10,5 +10,5 @@ command! Filter g!//d _
 command! -nargs=? Scratch let $DATE = expand(strftime('%Y-%m-%d')) | e $SCRATCHES/$DATE\_<args>.md
 
 " terminal を下部に表示する TODO すでに開いているならそれを開く
-command! ToggleSplitTerminal if &buftype ==# 'terminal' | q | else | call OpenSplitTerminal() | endif
+command! ToggleSplitTerminal if &buftype ==# 'terminal' | close | else | call OpenSplitTerminal() | endif
 

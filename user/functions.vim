@@ -1,8 +1,20 @@
+" bottom に小さい split window を作る。
+" terminal バッファがすでに存在するなら、それを開く。そうでないなら、terminal コマンドを打つ。
 function! OpenSplitTerminal() abort
     split
     wincmd j
     resize 20
-    terminal
+
+    " bufnr は、複数にマッチするときに -1 を返してしまうので2つ目を開いてしまっていてだめ。
+    let termnr = bufnr("term://")
+    if termnr == -1
+        terminal
+    else
+        " buffer は、複数にマッチするときに開けないのでだめ。
+        buffer term://*
+    endif
+
+
 endfunction
 
 " カーソル位置と command line に打ち込む文字列を指定する
