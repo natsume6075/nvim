@@ -1,7 +1,12 @@
 nnoremap <silent> <C-f>
             \ :Defx<CR>
 
-autocmd FileType defx call s:defx_my_settings()
+autocmd initvim FileType defx setlocal nonu
+autocmd initvim FileType defx setlocal foldcolumn=0
+autocmd initvim FileType defx nmap <buffer> <C-l> <Nop>
+autocmd initvim FileType defx nmap <buffer> <C-h> <Nop>
+
+autocmd initvim FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
     " Define mappings
     nnoremap <buffer><expr> q
