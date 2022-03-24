@@ -8,11 +8,6 @@ if exists("b:current_syntax")
     finish
 endif
 
-" Define color palette
-hi def LogI_color ctermfg=blue guifg=blue
-hi def LogD_color ctermfg=darkgreen guifg=darkgreen
-hi def LogV_color ctermfg=gray guifg=gray
-
 " Define common words
 syn keyword boolean true false Enable Disable enable disable
 syn match float "\<\d\+\(\.\d\+\)*\>"
@@ -36,12 +31,13 @@ syn match Time '^[0-9|-]* [0-9|:|.]*'
 syn keyword keyword_ppp getDataSharingParameter DataSharingSettingAllEnabled PrivacyActivity getShowDataSharingParameter PrivacyManagerService isPrivacyProtectionSupported checkUploadPermission setPrivacySettingValues getPrivacySettingValues setPrivacySettingList
 syn keyword keyword_tsu TsuConnectionStateMachine
 
-hi def link LogF ErrorMsg
-hi def link LogE ErrorMsg
-hi def link LogW WarningMsg
-hi def link LogI LogI_color
-hi def link LogD LogD_color
-hi def link LogV LogV_color
+hi def link LogF DiagnosticError
+hi def link LogE DiagnosticError
+hi def link LogW DiagnosticWarn
+hi def link LogI DiagnosticInfo
+hi def link LogD Debug
+hi def link LogV DiagnosticHint
+
 hi def link Time NonText
 hi def link File Type
 hi def link boolean Boolean
