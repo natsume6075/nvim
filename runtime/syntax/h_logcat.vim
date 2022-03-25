@@ -27,10 +27,12 @@ syn match LogV ' V '
 " Define time stamp
 syn match Time '^[0-9|-]* [0-9|:|.]*'
 
-" developmental keyword
+" Define developmental keyword
 syn keyword keyword_ppp getDataSharingParameter DataSharingSettingAllEnabled PrivacyActivity getShowDataSharingParameter PrivacyManagerService isPrivacyProtectionSupported checkUploadPermission setPrivacySettingValues getPrivacySettingValues setPrivacySettingList
 syn keyword keyword_tsu TsuConnectionStateMachine
 
+
+" Link syntax to highlight
 hi def link LogF DiagnosticError
 hi def link LogE DiagnosticError
 hi def link LogW DiagnosticWarn
