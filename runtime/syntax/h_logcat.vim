@@ -40,7 +40,7 @@ hi def link LogI DiagnosticInfo
 hi def link LogD Debug
 hi def link LogV DiagnosticHint
 
-hi def link Time NonText
+hi def link Time Comment
 hi def link File Type
 hi def link boolean Boolean
 hi def link keyword_ppp Keyword
