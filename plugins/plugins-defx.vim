@@ -1,4 +1,4 @@
-nnoremap <silent> <C-f>
+nnoremap <silent> <C-s>
             \ :Defx<CR>
 
 autocmd initvim FileType defx setlocal nonu
