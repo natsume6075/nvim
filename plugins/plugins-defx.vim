@@ -34,29 +34,29 @@ function! s:defx_my_settings() abort
     "            \                       defx#do_action('search', 'defx')
 
     " Information to display
-    nnoremap <silent><buffer><expr> -a
+    nnoremap         <buffer><expr> -a
                 \                       defx#do_action('toggle_ignored_files')
-    nnoremap <silent><buffer><expr> -l
+    nnoremap         <buffer><expr> -l
                 \                       defx#do_action('toggle_columns', 'mark:indent:icon:filename')
-    nnoremap <silent><buffer><expr> -sn
+    nnoremap         <buffer><expr> -sn
                 \                       defx#do_action('toggle_sort', 'filename') . defx#do_action('redraw')
-    nnoremap <silent><buffer><expr> -ss
+    nnoremap         <buffer><expr> -ss
                 \                       defx#do_action('toggle_sort', 'size') . defx#do_action('redraw')
-    nnoremap <silent><buffer><expr> -st
+    nnoremap         <buffer><expr> -st
                 \                       defx#do_action('toggle_sort', 'time') . defx#do_action('redraw')
-    nnoremap <silent><buffer><expr> -se
+    nnoremap         <buffer><expr> -se
                 \                       defx#do_action('toggle_sort', 'extension') . defx#do_action('redraw')
 
     " Directory operations TODO
-    nnoremap <silent><buffer><expr> cwd
+    nnoremap         <buffer><expr> cwd
                 \                       defx#do_action('change_vim_cwd')
-    nnoremap <silent><buffer><expr> cd.
+    nnoremap         <buffer><expr> cd.
                 \                       defx#do_action('cd', [substitute(expand("%:p"), "/[^/]*$", "", "g")])
-    nnoremap <silent><buffer><expr> cd~
+    nnoremap         <buffer><expr> cd~
                 \                       defx#do_action('cd')
-    " nnoremap <silent><buffer><expr> cd%
+    " nnoremap         <buffer><expr> cd%
     "            \                       defx#do_action('cd', tmp)
-    nnoremap <silent><buffer><expr> cdg
+    nnoremap         <buffer><expr> cdg
                 \                       defx#do_action('cd', [system('git rev-parse --show-toplevel 2> /dev/null')[:-2]])
 
     " File operations
@@ -82,7 +82,7 @@ function! s:defx_my_settings() abort
                 \                       defx#do_action('execute_system')
     nnoremap <silent><buffer><expr> ;
                 \                       defx#do_action('repeat')
-    nnoremap <silent><buffer><expr> <C-l>
+    nnoremap         <buffer><expr> <C-l>
                \                       defx#do_action('redraw')
 
     " appearance
