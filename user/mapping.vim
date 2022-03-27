@@ -62,8 +62,8 @@ nnoremap <C-p> :<C-p>
 nnoremap <silent> <ESC> :nohl<CR><ESC>
 nnoremap <silent> <C-c> :nohl<CR><C-c>
 nnoremap <silent> <C-{> :nohl<CR><C-{>
-nmap <silent> <C-h>        :bprevious<CR>
-nmap <silent> <C-l>        :bnext<CR>
+nmap <silent> <C-k>        :bprevious<CR>
+nmap <silent> <C-j>        :bnext<CR>
 
 nnoremap <C-t> :ToggleSplitTerminal<CR>
 
