@@ -95,6 +95,10 @@ function! s:defx_my_settings() abort
     autocmd! BufHidden \[defx\]* pclose
     " autocmd! BufWinLeave * isFloating then bufferから消す
 
+    " auto preview
+    " autocmd! CursorMoved <buffer> call defx#call_action("preview", [])
+
+
 endfunction
 
 
