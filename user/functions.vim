@@ -10,14 +10,24 @@ endfunction
 function! OpenSplitTerminal() abort
     call OpenBottomBar()
 
-    " bufnr は、複数にマッチするときに -1 を返してしまうので2つ目を開いてしまっていてだめ。
-    let termnr = bufnr("term://")
-    if termnr == -1
-        terminal
-    else
-        " buffer は、複数にマッチするときに開けないのでだめ。
+    " TODO bufnr, bufexists, bufloaded, buflisted の仕様がわけわかめ。
+    " exists と判定される条件と、buffers に含まれる条件に乖離が見られる。
+    " bufloaded, listed は、existes より厳しい条件。どんなときに差分が生じる？
+    if bufexists("term://"+'*')
+        " TODO buffer は、複数にマッチするときに開けないのでだめ。
         buffer term://*
+    else
+        terminal
     endif
+
+    " " bufnr は、複数にマッチするときに -1 を返してしまうので2つ目を開いてしまっていてだめ。
+    " let termnr = bufnr("term://")
+    " if termnr == -1
+    "     terminal
+    " else
+    "     " buffer は、複数にマッチするときに開けないのでだめ。
+    "     buffer term://*
+    " endif
 
 endfunction
 
