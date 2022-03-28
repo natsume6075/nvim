@@ -1,9 +1,14 @@
-" bottom に小さい split window を作る。
-" terminal バッファがすでに存在するなら、それを開く。そうでないなら、terminal コマンドを打つ。
-function! OpenSplitTerminal() abort
+" bottom に小さい split window を作り、フォーカスする。
+function! OpenBottomBar() abort
     split
     wincmd j
     resize 20
+endfunction
+
+" bottom に小さい split window を作り、フォーカスする。
+" terminal バッファがすでに存在するなら、それを開く。そうでないなら、terminal コマンドを打つ。
+function! OpenSplitTerminal() abort
+    call OpenBottomBar()
 
     " bufnr は、複数にマッチするときに -1 を返してしまうので2つ目を開いてしまっていてだめ。
     let termnr = bufnr("term://")
@@ -13,7 +18,6 @@ function! OpenSplitTerminal() abort
         " buffer は、複数にマッチするときに開けないのでだめ。
         buffer term://*
     endif
-
 
 endfunction
 
