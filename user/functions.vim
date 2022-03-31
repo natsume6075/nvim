@@ -13,7 +13,10 @@ function! OpenSplitTerminal() abort
     " TODO bufnr, bufexists, bufloaded, buflisted の仕様がわけわかめ。
     " exists と判定される条件と、buffers に含まれる条件に乖離が見られる。
     " bufloaded, listed は、existes より厳しい条件。どんなときに差分が生じる？
-    if bufexists("term://"+'*')
+    " また、defx でファイル開くと bufexists は true 返しちゃう。謎。
+    " bufnr は複数マッチすると -1 を返しちゃうので本当はだめなんだけど、これしかない。
+    if bufnr("term://") != -1
+    " if bufexists("term://"+'*')
         " TODO buffer は、複数にマッチするときに開けないのでだめ。
         buffer term://*
     else
