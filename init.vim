@@ -57,7 +57,9 @@ augroup END
 runtime! user/*.vim
 runtime! plugins/*.vim
 
-if has("mac")
+if IsWSL()
+    runtime! user_local/wsl.vim
+elseif has("mac")
     runtime! user_local/mac.vim
 elseif has("unix")
     runtime! user_local/unix.vim
