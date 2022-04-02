@@ -47,6 +47,14 @@ let $XDG_DATA_HOME = expand($HOME.'/.local/share')
 
 set runtimepath+=$XDG_CONFIG_HOME/nvim/runtime/
 
+if ! exists('$SCRATCHES')
+    let $SCRATCHES = expand($HOME.'/scratches')
+endif
+
+if ! exists('$BROWSER')
+    let $BROWSER = expand('vivaldi.exe')
+endif
+
 let floating_win_width_percent =  0.9
 let floating_win_height_percent = 0.9
 
