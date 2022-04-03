@@ -11,6 +11,7 @@ let &runtimepath = s:dein_repo_dir . ',' . &runtimepath
 
 let s:toml_file = g:pluginrc_dir . '/dein.toml'
 
+" TODO dein begin の前に書いておけば、自動でプラグインをロードできるが、起動ごとにエラーが出ている。
 let g:dein#auto_recache = 1
 
 if dein#load_state(s:dein_dir)
