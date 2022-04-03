@@ -28,7 +28,6 @@ if dein#load_state(s:dein_dir)
   " " call dein#add('Shougo/neco-vim')
   " call dein#add('Shougo/neosnippet.vim')
   " call dein#add('Shougo/neosnippet-snippets')
-  " call dein#add('kristijanhusak/defx-git')
   " 
   " call dein#add('Shougo/deol.nvim')
   " call dein#add('thinca/vim-quickrun')
