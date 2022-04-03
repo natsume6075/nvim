@@ -3,6 +3,10 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
+hook_add = '''
+    runtime! plugins/plugins-defx.vim
+    " runtime! expand(g:pluginrc_dir . '/plugins-defx.vim')
+'''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'

@@ -1,4 +1,4 @@
-let s:pluginrc_dir = g:vimrc_dir . '/plugins'
+let g:pluginrc_dir = g:vimrc_dir . '/plugins'
 let s:dein_dir = g:cache_home . '/dein'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
@@ -9,7 +9,7 @@ endif
 
 let &runtimepath = s:dein_repo_dir . ',' . &runtimepath
 
-let s:toml_file = s:pluginrc_dir . '/dein.toml'
+let s:toml_file = g:pluginrc_dir . '/dein.toml'
 
 let g:dein#auto_recache = 1
 
