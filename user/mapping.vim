@@ -58,12 +58,13 @@ nnoremap k gk
 
 nnoremap zh zMzv
 
-nnoremap <C-p> :<C-p>
-nnoremap <silent> <ESC> :nohl<CR><ESC>
-nnoremap <silent> <C-c> :nohl<CR><C-c>
-nnoremap <silent> <C-{> :nohl<CR><C-{>
-nmap <silent> <C-k>        :bprevious<CR>
-nmap <silent> <C-j>        :bnext<CR>
+nnoremap <C-p>          :<C-p>
+nnoremap <silent> <ESC>     <cmd>nohl<CR><ESC>
+nnoremap <silent> <C-c>     <cmd>nohl<CR><C-c>
+nnoremap <silent> <C-{>     <cmd>nohl<CR><C-{>
+nnoremap <silent> <C-k>     <cmd>bprevious<CR>
+nnoremap <silent> <C-j>     <cmd>bnext<CR>
+" nnoremap <silent> <C-w>d    <cmd>bd<CR>
 
 nnoremap <C-t> :ToggleSplitTerminal<CR>
 
