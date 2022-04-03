@@ -1,0 +1,33 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = ['vim-airline-themes']
+hook_add = '''
+    " let g:airline_theme = 'luna'
+    let g:airline_theme = 'deus'
+
+    " Enable smarter tab line
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#buffer_idx_mode = 1
+    let g:airline_powerline_fonts = 1
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]] # color scheme
+repo = 'cocopon/iceberg.vim'
+
+[[plugins]] # comment plugin
+repo = 'tyru/caw.vim'
+hook_add = '''
+    " Ctrl-/ にマップするためには、C-_ を指定する。
+    nmap <silent> <C-_> <plug>(caw:hatpos:toggle)
+    vmap <silent> <C-_> <plug>(caw:hatpos:toggle)
+'''
+
