@@ -62,7 +62,6 @@ if dein#load_state(s:dein_dir)
   " call dein#add('LeafCage/foldCC.vim')
   " 
   " call dein#add('lervag/vimtex')
-  " call dein#add('cohama/lexima.vim')
   " call dein#add('tpope/vim-surround')
   " call dein#add('mattn/calendar-vim')
   " 
