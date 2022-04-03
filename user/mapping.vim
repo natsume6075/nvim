@@ -98,10 +98,6 @@ endfunction
 " map <f2> to toggle show Information
 nnoremap <f2> :
       \:set cursorcolumn!<CR>
-" map <f4> to edit init.vim
-nnoremap <f4> :<C-u>.tabedit $XDG_CONFIG_HOME/nvim/init.vim<CR>
-" map <f5> to source init.vim
-nnoremap <f5> :<C-u>source $XDG_CONFIG_HOME/nvim/init.vim<CR>
 " map language_specific/global neosnippet edit
 nnoremap <f7>  :NeoSnippetEdit -horizontal<CR>
 xnoremap <f7>  y :NeoSnippetEdit -horizontal<CR>Gp
