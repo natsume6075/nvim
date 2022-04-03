@@ -57,3 +57,6 @@ hook_add = '''
 [[plugins]] # Git wrapper
 repo = 'tpope/vim-fugitive'
 
+[[plugins]] # shows git diff markers in the sign column and stages/previews/undoes hunks
+repo = 'airblade/vim-gitgutter'
+

@@ -56,7 +56,6 @@ if dein#load_state(s:dein_dir)
   " 
   " " call dein#add('vim-jp/vimdoc-ja')
   " " call dein#add('thinca/vim-ft-help_fold')
-  " call dein#add('airblade/vim-gitgutter')
   " 
   " call dein#add('LeafCage/foldCC.vim')
   " 
