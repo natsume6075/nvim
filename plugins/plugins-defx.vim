@@ -111,7 +111,7 @@ call defx#custom#column('mark', {
 
 " Layout at startup.
 call defx#custom#option('_', {
-            \ 'columns': 'mark:indent:icon:filename:type:size:time',
+            \ 'columns': 'git:mark:indent:icon:filename:type:size:time',
             \ 'sort': 'filename',
             \ 'split': 'floating',
             \ 'vertical_preview': v:true,

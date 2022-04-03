@@ -21,6 +21,8 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('Shougo/defx.nvim')
+  call dein#add('kristijanhusak/defx-git')
+
   call dein#add('Shougo/deol.nvim')
   call dein#add('thinca/vim-quickrun')
   call dein#add('Shougo/vimproc.vim')
