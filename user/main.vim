@@ -19,6 +19,7 @@ set display=lastline
 set pumheight=12
 set spell
 set spelllang=en,cjk
+set updatetime=100
 "}}}
 
 " --- Motion -------------------------------{{{
