@@ -34,7 +34,6 @@ if dein#load_state(s:dein_dir)
   " call dein#add('thinca/vim-quickrun')
   " call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   " 
-  " call dein#add('osyo-manga/vim-anzu')
   " " call dein#add('bronson/vim-trailing-whitespace')
   " 
   " call dein#add('kannokanno/previm')

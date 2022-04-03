@@ -39,6 +39,15 @@ hook_add = '''
     vmap <silent> <C-_> <plug>(caw:hatpos:toggle)
 '''
 
+[[plugins]] # show search status
+repo = 'osyo-manga/vim-anzu'
+hook_add = '''
+    nmap n <Plug>(anzu-n-with-echo)
+    nmap N <Plug>(anzu-N-with-echo)
+    nmap * <Plug>(anzu-star-with-echo)
+    nmap # <Plug>(anzu-sharp-with-echo)
+'''
+
 [[plugins]] # Auto close parentheses
 repo = 'cohama/lexima.vim'
 hook_add = '''
