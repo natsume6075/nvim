@@ -65,7 +65,7 @@ augroup initvim
 augroup END
 
 runtime! user/*.vim
-runtime! plugins/*.vim
+" runtime! plugins/*.vim
 
 if IsWSL()
     runtime! user_local/wsl.vim
