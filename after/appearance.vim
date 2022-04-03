@@ -39,8 +39,9 @@ hi SpellRare None
 
 
 " --- colorscheme ごとの調整 ---"
-
-if g:colors_name == "japanesque"
-    hi Search ctermbg=yellow
+if exists('g:color_name')
+    if g:colors_name == "japanesque"
+        hi Search ctermbg=yellow
+    endif
 endif
 
