@@ -1,5 +1,5 @@
 " deoplete/neosippet ---------------------
-let g:neosnippet#snippets_directory='$XDG_CONFIG_HOME/nvim/my_snippets'
+let g:neosnippet#snippets_directory = g:vimrc_dir . '/my_snippets'
 
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('auto_complete_delay', 0)

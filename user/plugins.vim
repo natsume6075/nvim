@@ -1,14 +1,24 @@
-set runtimepath+=$XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim
+let s:pluginrc_dir = g:vimrc_dir . '/plugins'
+let s:dein_dir = g:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-if dein#load_state('$XDG_CACHE_HOME/dein')
+" dein がないならインストール
+if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+endif
+
+let &runtimepath = s:dein_repo_dir . ',' . &runtimepath
+
+
+if dein#load_state(s:dein_dir)
 
   " コメントアウト外したら以下のコマンドを実行する
   " :call dein#recache_runtimepath()
 
-  call dein#begin('$XDG_CACHE_HOME/dein')
+  call dein#begin(s:dein_dir)
 
   " Let dein manage dein
-  call dein#add('$XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add(s:dein_repo_dir)
 
   " core plugin
   call dein#add('Shougo/deoplete.nvim')

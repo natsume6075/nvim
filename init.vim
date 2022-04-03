@@ -40,12 +40,15 @@
 
 set nocompatible
 
-let $XDG_CACHE_HOME = expand($HOME.'/.cache')
-let $XDG_CONFIG_HOME = expand($HOME.'/.config')
+let g:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let g:config_home = empty($XDG_CONFIG_HOME) ? expand('~/.config') : $XDG_CONFIG_HOME
 let $XDG_DATA_DIRS = expand('/usr/local/share:/usr/share')
 let $XDG_DATA_HOME = expand($HOME.'/.local/share')
 
-set runtimepath+=$XDG_CONFIG_HOME/nvim/runtime/
+let g:vimrc_dir = fnamemodify(expand('<sfile>'), ':h')
+
+let s:runtime_dir = g:vimrc_dir . '/runtime'
+let &runtimepath = s:runtime_dir . ',' . &runtimepath
 
 if ! exists('$SCRATCHES')
     let $SCRATCHES = expand($HOME.'/scratches')
