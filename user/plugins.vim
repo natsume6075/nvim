@@ -54,6 +54,8 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
   " call dein#add('vim-jp/vimdoc-ja')
   " call dein#add('thinca/vim-ft-help_fold')
   call dein#add('tpope/vim-fugitive')
+  call dein#add('airblade/vim-gitgutter')
+
   call dein#add('LeafCage/foldCC.vim')
 
   call dein#add('lervag/vimtex')
