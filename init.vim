@@ -42,8 +42,7 @@ set nocompatible
 
 let g:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
 let g:config_home = empty($XDG_CONFIG_HOME) ? expand('~/.config') : $XDG_CONFIG_HOME
-let $XDG_DATA_DIRS = expand('/usr/local/share:/usr/share')
-let $XDG_DATA_HOME = expand($HOME.'/.local/share')
+let g:data_home = empty($XDG_DATA_HOME) ? expand('~/.local/share') : $XDG_DATA_HOME
 
 let g:vimrc_dir = fnamemodify(expand('<sfile>'), ':h')
 

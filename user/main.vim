@@ -8,9 +8,9 @@ let save_curpos = getcurpos()
 
 " --- Global Settings: ---------------------{{{
 set fenc=utf-8
-set backupdir=$XDG_DATA_HOME/nvim/backup
+let &backupdir = g:data_home . '/nvim/backup'
 set backup
-set directory=$XDG_DATA_HOME/nvim/swap
+let &directory = g:data_home . '/nvim/swap'
 set swapfile
 set autoread
 set hidden
@@ -19,7 +19,7 @@ set display=lastline
 set pumheight=12
 set spell
 set spelllang=en,cjk
-set updatetime=100
+set updatetime=100      " default 4000
 "}}}
 
 " --- Motion -------------------------------{{{
@@ -31,12 +31,12 @@ set scrolloff=2
 "}}}
 
 " --- Undo ---------------------------------{{{
-set undodir=$XDG_DATA_HOME/nvim/undo
+let &undodir = g:data_home . '/nvim/undo'
 set undofile
 set undolevels=1000
 
 autocmd initvim VimEnter *
-            \ if isdirectory(expand('$XDG_DATA_HOME/nvim/undo')) == 0 |
+            \ if isdirectory(&undodir) == 0 |
             \     echomsg "notice: undo directory is not exist" |
             \ endif
 "}}}
@@ -50,8 +50,10 @@ autocmd initvim TextYankPost * :wv
 autocmd initvim FocusGained * :rv!
 " }}}
 
-" --- viminfo ------------------------------{{{
-set viminfo+=n$XDG_DATA_HOME/nvim/viminfo
+" --- viminfo(shada) ------------------------------{{{
+" file location は、デフォルトで ~/.local/share/nvim/shada
+set shada='100,<50,s10,h
+
 " }}}
 
 " --- Folding ------------------------------{{{
