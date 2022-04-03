@@ -25,7 +25,7 @@ if dein#load_state('$XDG_CACHE_HOME/dein')
 
   call dein#add('Shougo/deol.nvim')
   call dein#add('thinca/vim-quickrun')
-  call dein#add('Shougo/vimproc.vim')
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 
   call dein#add('osyo-manga/vim-anzu')
   " call dein#add('bronson/vim-trailing-whitespace')
