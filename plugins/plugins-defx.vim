@@ -54,8 +54,8 @@ function! s:defx_my_settings() abort
                 \                       defx#do_action('cd', [substitute(expand("%:p"), "/[^/]*$", "", "g")])
     nnoremap         <buffer><expr> cd~
                 \                       defx#do_action('cd')
-    " nnoremap         <buffer><expr> cd%
-    "            \                       defx#do_action('cd', tmp)
+    nnoremap         <buffer><expr> cd%
+               \                       defx#do_action('cd', current_dir)
     nnoremap         <buffer><expr> cdg
                 \                       defx#do_action('cd', [system('git rev-parse --show-toplevel 2> /dev/null')[:-2]])
 
