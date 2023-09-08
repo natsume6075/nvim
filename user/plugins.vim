@@ -91,16 +91,15 @@ syntax enable
 " If you want to install not installed plugins on startup.
 if dein#check_install()
   call dein#install()
-
 endif
 
 let g:dein#auto_recache = 1
 
-call dein#add('Shougo/deoplete.nvim')
 if !has('nvim')
   call dein#add('roxma/nvim-yarp')
   call dein#add('roxma/vim-hug-neovim-rpc')
 endif
+
 let g:deoplete#enable_at_startup = 1
 
 " call map(dein#check_clean(), "delete(v:val, 'rf')")
