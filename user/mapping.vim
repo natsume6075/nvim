@@ -62,11 +62,11 @@ nnoremap <C-p>          :<C-p>
 nnoremap <silent> <ESC>     <cmd>nohl<CR><ESC>
 nnoremap <silent> <C-c>     <cmd>nohl<CR><C-c>
 nnoremap <silent> <C-{>     <cmd>nohl<CR><C-{>
-nnoremap <silent> <C-k>     <cmd>bprevious<CR>
-nnoremap <silent> <C-j>     <cmd>bnext<CR>
+nnoremap <silent> <A-k>     <cmd>bprevious<CR>
+nnoremap <silent> <A-j>     <cmd>bnext<CR>
 " nnoremap <silent> <C-w>d    <cmd>bd<CR>
 
-nnoremap <C-t> :ToggleSplitTerminal<CR>
+nnoremap <A-t> :ToggleSplitTerminal<CR>
 
 " 文字数をカウンティングする
 " nnoremap <Leader>cou :%s/.//gn
