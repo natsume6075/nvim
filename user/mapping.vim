@@ -66,7 +66,8 @@ nnoremap <silent> <A-k>     <cmd>bprevious<CR>
 nnoremap <silent> <A-j>     <cmd>bnext<CR>
 " nnoremap <silent> <C-w>d    <cmd>bd<CR>
 
-nnoremap <A-t> :ToggleSplitTerminal<CR>
+nnoremap <A-t> <Cmd>ToggleSplitTerminal<CR>
+nnoremap <A-u> <Cmd>UndotreeToggle<CR>
 
 " 文字数をカウンティングする
 " nnoremap <Leader>cou :%s/.//gn

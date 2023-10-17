@@ -36,6 +36,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('Shougo/deol.nvim')
   call dein#add('thinca/vim-quickrun')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+  call dein#add('mbbill/undotree')
 
   call dein#add('osyo-manga/vim-anzu')
   " call dein#add('bronson/vim-trailing-whitespace')
