@@ -16,4 +16,6 @@ autocmd initvim BufNewFile,BufRead *.logcat setfiletype h_logcat
 " autocmd initvim TermOpen * startinsert
 autocmd initvim TermOpen * setlocal nonu
 autocmd initvim TermOpen * setlocal foldcolumn=0
+" 再表示では insert に入ってほしくない(履歴を閲覧しているかも)ので、外す。
+" autocmd initvim TermOpen * startinsert
 

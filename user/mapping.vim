@@ -141,7 +141,9 @@ cnoremap    <C-p> <Up>
 
 " --- tmap --------------------------------------------------{{{
 tnoremap <ESC> <C-\><C-n>
-tnoremap <C-t> <Cmd>ToggleSplitTerminal<CR>
+tnoremap <silent> <A-t> <C-\><C-n><Cmd>ToggleSplitTerminal<CR>
+tnoremap <silent> <A-k> <C-\><C-n><cmd>bprevious<CR>
+tnoremap <silent> <A-j> <C-\><C-n><cmd>bnext<CR>
 
 "}}}
 
