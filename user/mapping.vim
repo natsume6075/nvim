@@ -107,6 +107,9 @@ xnoremap <f19> y :NeoSnippetEdit -horizontal _<CR>Gp
 
 "}}}
 
+autocmd initvim BufNewFile,BufRead *.md nmap o A<CR>
+autocmd initvim BufNewFile,BufRead *.md nmap O <Up>A<CR>
+
 "}}}
 
 " --- vmap --------------------------------------------------{{{
@@ -124,6 +127,10 @@ map! ｊｊ <ESC>
 " --- imap --------------------------------------------------{{{
 " spell
 inoremap <C-s> <C-x>s
+
+" increase indent by <Tab>
+autocmd initvim BufNewFile,BufRead *.md imap <Tab> <C-t>
+autocmd initvim BufNewFile,BufRead *.md imap <S-Tab> <C-d>
 
 "}}}
 
