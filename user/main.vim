@@ -48,6 +48,22 @@ autocmd initvim TextYankPost *
 " buffer 間で reg を共有するための記述
 autocmd initvim TextYankPost * :wv
 autocmd initvim FocusGained * :rv!
+
+" WSL連携用のclipboard設定
+let g:clipboard = {
+    \   'name': 'myClipboard',
+    \   'copy': {
+    \      '+': 'win32yank.exe -i',
+    \      '*': 'win32yank.exe -i',
+    \    },
+    \   'paste': {
+    \      '+': 'win32yank.exe -o',
+    \      '*': 'win32yank.exe -o',
+    \   },
+    \   'cache_enabled': 1,
+    \ }
+
+
 " }}}
 
 " --- viminfo(shada) ------------------------------{{{
